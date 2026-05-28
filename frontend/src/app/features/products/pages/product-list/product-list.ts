@@ -3,11 +3,12 @@ import { ProductQueryService } from '../../queryService/product.query.service';
 import { ProductCardComponent } from '../../components/product-card/product-card';
 import { RouterLink } from '@angular/router';
 import { SearchInput } from '../../../../shared/ui/search-input/search-input';
+import { SelectInput } from '../../../../shared/ui/select-input/select-input';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [ProductCardComponent, RouterLink, SearchInput],
+  imports: [ProductCardComponent, RouterLink, SearchInput, SelectInput],
   templateUrl: './product-list.html'
 })
 export class ProductList {
@@ -16,6 +17,7 @@ export class ProductList {
 
   searchTerm = signal(''); // debounced value
   searchInput = signal(''); // immediate typing
+  selectedCategory = signal('');
 
   constructor() {
     effect((onCleanup) => {
@@ -27,7 +29,18 @@ export class ProductList {
   filteredProducts = computed(() => {
     const products = this.productsQuery.data() ?? [];
     const term = this.searchTerm().toLowerCase().trim();
-    if (!term) return products;
-    return products.filter(product => product.name.toLocaleLowerCase().includes(term));
+    const category = this.selectedCategory();
+
+    return products.filter(product => {
+      const matchesSearch = !term || product.name.toLowerCase().trim();
+      const matchesCategory = !category || product.category === category;
+
+      return (matchesSearch && matchesCategory);
+    });
+  });
+
+  categories = computed(() => {
+    const products = this.productsQuery.data() ?? [];
+    return [...new Set(products.map(product => product.category))].sort()
   });
 }
