@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "name": "Headphone",
-      "price": 3000,
-      "quantity": 16,
-      "category": "Electronics",
-      "id": "8x4YQrZc-yE"
-    },
-    {
       "name": "EarBuds",
       "price": 2500,
       "quantity": 10,
