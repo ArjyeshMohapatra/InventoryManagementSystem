@@ -17,13 +17,15 @@
             Edit
         </button>
         
-        <button (click)="deleteProduct()" [disabled]="deleteMutation.isPending()" class="bg-red-500 text-white px-3 py-1 rounded">
-            @if (deleteMutation.isPending()) {
-            Deleting...
-            } @else {
-            Delete       }
+        <button (click)="openDeleteModal()" class="bg-red-500 text-white px-3 py-1 rounded">
+            Delete
         </button>
     </div>
+
+    <app-modal [open]="showDeleteModal()" title="Delete Product"
+        message="Are you sure you want to delete this product? This action cannot be undone." (confirmed)="deleteProduct()"
+        (cancelled)="closeDeleteModal()">
+    </app-modal>
     
 
     </div>

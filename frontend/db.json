@@ -1,16 +1,9 @@
 {
   "products": [
     {
-      "name": "Mouse",
-      "price": 1000,
-      "quantity": 25,
-      "category": "Electronics",
-      "id": "nj3etry5t40"
-    },
-    {
       "name": "Headphone",
       "price": 3000,
-      "quantity": 15,
+      "quantity": 16,
       "category": "Electronics",
       "id": "8x4YQrZc-yE"
     },
@@ -20,6 +13,13 @@
       "quantity": 10,
       "category": "Electronics",
       "id": "hnU0-k9i_qw"
+    },
+    {
+      "name": "Mouse",
+      "price": 1000,
+      "quantity": 25,
+      "category": "Electronics",
+      "id": "2NnTEmf3eWY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

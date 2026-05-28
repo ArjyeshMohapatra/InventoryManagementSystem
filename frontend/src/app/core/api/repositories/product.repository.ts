@@ -29,7 +29,7 @@ export class ProductRepository {
         return this.http.get<Product>(`${this.productsApi}/${id}`);
     }
 
-    deleteProduct(id: number) {
+    deleteProduct(id: string) {
         return this.http.delete(`${this.productsApi}/${id}`);
       }
 

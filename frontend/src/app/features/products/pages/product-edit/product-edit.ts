@@ -33,7 +33,7 @@ export class ProductEdit{
     category: ['']
 
   });
-
+  
   constructor() {
     effect(() => {
       // Reactively patch the form whenever the cached data resolves successfully
@@ -44,7 +44,7 @@ export class ProductEdit{
 
   submit() {
     if (this.form.invalid) return;
-    const updatedProduct = { ...this.form.value, id: Number(this.id) };
+    const updatedProduct = { ...this.form.value, id: String(this.id) };
     
     this.updateMutation.mutate(updatedProduct as Product, {
       onSuccess: () => {

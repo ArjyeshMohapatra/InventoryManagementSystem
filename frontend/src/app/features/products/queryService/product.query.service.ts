@@ -24,7 +24,7 @@ export class ProductQueryService {
     return injectQuery(() => ({
       queryKey: ['products', id()],
       queryFn: () => firstValueFrom(this.repo.getProductById(id())),
-      staleTime: 1000 * 60 * 5, // Keep fresh for 5 minutes
+      staleTime: 1000 * 60 * 5,
     }));
   }
 
@@ -54,7 +54,7 @@ export class ProductQueryService {
 
   deleteProductMutation() {
     return injectMutation(() => ({
-      mutationFn: (id: number) => firstValueFrom(this.repo.deleteProduct(id)),
+      mutationFn: (id: string) => firstValueFrom(this.repo.deleteProduct(id)),
       onSuccess: () => {
         this.queryClient.invalidateQueries({ queryKey: ['products'], exact: false, refetchType: 'active' });
       },
