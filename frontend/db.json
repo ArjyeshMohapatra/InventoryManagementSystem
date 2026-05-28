@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "Mouse",
-      "price": 850,
+      "price": 999,
       "quantity": 25,
       "category": "Electronics",
       "id": "2"
@@ -13,6 +13,13 @@
       "quantity": 15,
       "category": "Electronics",
       "id": "8x4YQrZc-yE"
+    },
+    {
+      "name": "Charging Cable",
+      "price": 200,
+      "quantity": 30,
+      "category": "Electronics",
+      "id": "t79IbOxnIaE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

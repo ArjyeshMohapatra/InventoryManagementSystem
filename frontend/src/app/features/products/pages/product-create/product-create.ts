@@ -6,8 +6,7 @@ import {
 
 import { Router } from '@angular/router';
 
-import { ProductStore } from '../../store/product.store';
-import { Product } from '../../models/product.model';
+import { ProductQueryService } from '../../queryService/product.query.service';import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-create',
@@ -19,9 +18,10 @@ export class ProductCreate {
 
   private fb = inject(FormBuilder);
 
-  private store = inject(ProductStore);
-
+  private productQueryService = inject(ProductQueryService);
   private router = inject(Router);
+
+  addMutation = this.productQueryService.addProductMutation();
 
   form = this.fb.group({
 
@@ -33,8 +33,12 @@ export class ProductCreate {
   });
 
   submit() {
-    this.store.addProduct(this.form.value as Product)
-    this.router.navigate(['/products']);
+    if (this.form.invalid || this.addMutation.isPending()) return;
+    this.addMutation.mutate(this.form.value as Product, {
+      onSuccess: () => {
+        this.router.navigate(['/products']);
+      }
+    });
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, input, inject } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { RouterLink } from '@angular/router';
-import { ProductStore } from '../../store/product.store';
+import { ProductQueryService } from '../../queryService/product.query.service';
 
 @Component({
   selector: 'app-product-card',
@@ -10,11 +10,12 @@ import { ProductStore } from '../../store/product.store';
   templateUrl: './product-card.html'
 })
 export class ProductCardComponent {
-  private store = inject(ProductStore);
+  private productQueryService = inject(ProductQueryService);
   product = input.required<Product>();
 
+  deleteMutation = this.productQueryService.deleteProductMutation();
+
   deleteProduct() {
-    this.store.deleteProduct(this.product().id)
-    this.store.loadProducts();
+    this.deleteMutation.mutate(this.product().id)
   }
 }

@@ -1,5 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ProductStore } from '../../store/product.store';
+import { Component, inject } from '@angular/core';
+import { ProductQueryService } from '../../queryService/product.query.service';
 import { ProductCardComponent } from '../../components/product-card/product-card';
 import { RouterLink } from '@angular/router';
 
@@ -9,14 +9,7 @@ import { RouterLink } from '@angular/router';
   imports: [ProductCardComponent, RouterLink],
   templateUrl: './product-list.html'
 })
-export class ProductList implements OnInit {
-
-  store = inject(ProductStore);
-
-  ngOnInit(): void {
-
-    this.store.loadProducts();
-
-  }
-
+export class ProductList {
+  private productQueryService = inject(ProductQueryService);
+  productsQuery = this.productQueryService.getProductsQuery();
 }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   FormBuilder,
@@ -9,8 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ProductRepository } from '../../../../core/api/repositories/product.repository';
 
-import { ProductStore } from '../../store/product.store';
-
+import { ProductQueryService } from '../../queryService/product.query.service';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -19,19 +18,18 @@ import { Product } from '../../models/product.model';
   imports: [ReactiveFormsModule],
   templateUrl: './product-edit.html'
 })
-export class ProductEdit implements OnInit {
+export class ProductEdit{
 
   private fb = inject(FormBuilder);
-
   private router = inject(Router);
-
   private route = inject(ActivatedRoute);
-
   private repo = inject(ProductRepository);
-
-  private store = inject(ProductStore);
+  private productQueryService = inject(ProductQueryService);
 
   id = this.route.snapshot.params['id'];
+
+  updateMutation = this.productQueryService.updateProductMutation();
+  productQuery = this.productQueryService.getProductQuery(() => this.id);
 
   form = this.fb.group({
 
@@ -42,31 +40,23 @@ export class ProductEdit implements OnInit {
 
   });
 
-  ngOnInit(): void {
-
-    this.repo.getProductById(Number(this.id))
-      .subscribe(product => {
-
-        this.form.patchValue(product);
-
-      });
-
+  constructor() {
+    effect(() => {
+      // Reactively patch the form whenever the cached data resolves successfully
+      const productData = this.productQuery.data();
+      if (productData) this.form.patchValue(productData);
+    });
   }
 
   submit() {
-
-    const updatedProduct = {
-
-      ...this.form.value,
-
-      id: Number(this.id)
-
-    };
-
-    this.store.updateProduct(
-      updatedProduct as Product
-    );
-    this.router.navigate(['/products']);
+    if (this.form.invalid) return;
+    const updatedProduct = { ...this.form.value, id: Number(this.id) };
+    
+    this.updateMutation.mutate(updatedProduct as Product, {
+      onSuccess: () => {
+        // Navigate away ONLY after the backend has officially updated the item!
+        this.router.navigate(['/products']);
+      }
+    });
   }
-
 }
