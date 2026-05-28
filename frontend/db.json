@@ -20,6 +20,685 @@
       "quantity": 25,
       "category": "Electronics",
       "id": "2NnTEmf3eWY"
+    },
+    {
+      "name": "Mechanical Keyboard",
+      "price": 4500,
+      "quantity": 15,
+      "category": "Electronics",
+      "id": "aBcD1eF2gHi"
+    },
+    {
+      "name": "FHD Monitor 24-inch",
+      "price": 12000,
+      "quantity": 8,
+      "category": "Electronics",
+      "id": "jKlM3nO4pQr"
+    },
+    {
+      "name": "HD Webcam 1080p",
+      "price": 3500,
+      "quantity": 20,
+      "category": "Electronics",
+      "id": "sTuV5wX6yZa"
+    },
+    {
+      "name": "USB-C Hub Multiport",
+      "price": 2200,
+      "quantity": 40,
+      "category": "Electronics",
+      "id": "bCdE7fG8hIj"
+    },
+    {
+      "name": "Wireless Charger Pad",
+      "price": 1500,
+      "quantity": 30,
+      "category": "Electronics",
+      "id": "kLmN9oP0qRs"
+    },
+    {
+      "name": "Bluetooth Speaker Portable",
+      "price": 3999,
+      "quantity": 18,
+      "category": "Electronics",
+      "id": "tUvW1xY2zAb"
+    },
+    {
+      "name": "External SSD 1TB",
+      "price": 8500,
+      "quantity": 12,
+      "category": "Electronics",
+      "id": "cDeF3gH4iJk"
+    },
+    {
+      "name": "Graphic Drawing Tablet",
+      "price": 6800,
+      "quantity": 10,
+      "category": "Electronics",
+      "id": "lMnOP5qR6sT"
+    },
+    {
+      "name": "Laptop Cooling Pad",
+      "price": 1800,
+      "quantity": 22,
+      "category": "Electronics",
+      "id": "uVwX7yZ8aBc"
+    },
+    {
+      "name": "HDMI Cable 4K 3-Meter",
+      "price": 600,
+      "quantity": 100,
+      "category": "Electronics",
+      "id": "dEfG9hI0jKl"
+    },
+    {
+      "name": "Power Bank 20000mAh",
+      "price": 2800,
+      "quantity": 35,
+      "category": "Electronics",
+      "id": "mNoP1qR2sTu"
+    },
+    {
+      "name": "Smart Fitness Band",
+      "price": 2499,
+      "quantity": 25,
+      "category": "Electronics",
+      "id": "vWxY3zA4bCd"
+    },
+    {
+      "name": "Noise Cancelling Earplugs",
+      "price": 999,
+      "quantity": 50,
+      "category": "Electronics",
+      "id": "eFgH5iJ6kLm"
+    },
+    {
+      "name": "Ergonomic Office Chair",
+      "price": 14500,
+      "quantity": 6,
+      "category": "Office Supplies",
+      "id": "nOpQ7rS8tUv"
+    },
+    {
+      "name": "LED Desk Lamp with USB",
+      "price": 1950,
+      "quantity": 14,
+      "category": "Office Supplies",
+      "id": "wXyZ9aB0cDe"
+    },
+    {
+      "name": "Dual Monitor Arm Mount",
+      "price": 4200,
+      "quantity": 11,
+      "category": "Office Supplies",
+      "id": "fGhI1jK2lMn"
+    },
+    {
+      "name": "Memory Foam Seat Cushion",
+      "price": 1350,
+      "quantity": 28,
+      "category": "Office Supplies",
+      "id": "oPqR3sT4uVw"
+    },
+    {
+      "name": "Whiteboard 3x2 Feet",
+      "price": 2100,
+      "quantity": 15,
+      "category": "Office Supplies",
+      "id": "xYzA5bC6dEf"
+    },
+    {
+      "name": "Paper Shredder Cross-Cut",
+      "price": 4900,
+      "quantity": 7,
+      "category": "Office Supplies",
+      "id": "gHiJ7kL8mNo"
+    },
+    {
+      "name": "Gel Pens Assorted 12-Pack",
+      "price": 450,
+      "quantity": 85,
+      "category": "Office Supplies",
+      "id": "pQrS9tU0vWx"
+    },
+    {
+      "name": "Heavy Duty Stapler",
+      "price": 750,
+      "quantity": 40,
+      "category": "Office Supplies",
+      "id": "yZaB1cD2eFg"
+    },
+    {
+      "name": "Desk Organizer Mesh Caddy",
+      "price": 650,
+      "quantity": 60,
+      "category": "Office Supplies",
+      "id": "hIjK3lM4nOp"
+    },
+    {
+      "name": "Notebook Journal A5 Hardcover",
+      "price": 399,
+      "quantity": 120,
+      "category": "Office Supplies",
+      "id": "qRsT5uV6wXy"
+    },
+    {
+      "name": "Wireless Presenter Clicker",
+      "price": 1250,
+      "quantity": 24,
+      "category": "Office Supplies",
+      "id": "zA_B7cD8eFg"
+    },
+    {
+      "name": "Electric Pencil Sharpener",
+      "price": 1100,
+      "quantity": 19,
+      "category": "Office Supplies",
+      "id": "iJkL9mN0oPq"
+    },
+    {
+      "name": "Premium Cotton T-Shirt",
+      "price": 899,
+      "quantity": 45,
+      "category": "Apparel",
+      "id": "rStU1vW2xYz"
+    },
+    {
+      "name": "Slim Fit Denim Jeans",
+      "price": 2499,
+      "quantity": 30,
+      "category": "Apparel",
+      "id": "aBcD3eF4gHi"
+    },
+    {
+      "name": "Hooded Sweatshirt Pullover",
+      "price": 1899,
+      "quantity": 25,
+      "category": "Apparel",
+      "id": "jKlM5nO6pQr"
+    },
+    {
+      "name": "Running Sports Socks 3-Pack",
+      "price": 499,
+      "quantity": 90,
+      "category": "Apparel",
+      "id": "sTuV7wX8yZa"
+    },
+    {
+      "name": "Casual Canvas Sneakers",
+      "price": 3200,
+      "quantity": 20,
+      "category": "Apparel",
+      "id": "bCdE9fG0hIj"
+    },
+    {
+      "name": "Leather Dress Belt",
+      "price": 1200,
+      "quantity": 35,
+      "category": "Apparel",
+      "id": "kLmN1oP2qRs"
+    },
+    {
+      "name": "Windbreaker Waterproof Jacket",
+      "price": 3800,
+      "quantity": 15,
+      "category": "Apparel",
+      "id": "tUvW3xY4zAb"
+    },
+    {
+      "name": "Athletic Training Shorts",
+      "price": 950,
+      "quantity": 40,
+      "category": "Apparel",
+      "id": "cDeF5gH6iJk"
+    },
+    {
+      "name": "Polarized Sports Sunglasses",
+      "price": 1599,
+      "quantity": 28,
+      "category": "Apparel",
+      "id": "lMnOP7qR8sT"
+    },
+    {
+      "name": "Winter Knit Beanie Hat",
+      "price": 550,
+      "quantity": 65,
+      "category": "Apparel",
+      "id": "uVwX9yZ0aBc"
+    },
+    {
+      "name": "Baseball Cap Adjustable",
+      "price": 699,
+      "quantity": 55,
+      "category": "Apparel",
+      "id": "dEfG1hI2jKl"
+    },
+    {
+      "name": "Fleece Pajama Set",
+      "price": 1650,
+      "quantity": 22,
+      "category": "Apparel",
+      "id": "mNoP3qR4sTu"
+    },
+    {
+      "name": "Stainless Steel Water Bottle",
+      "price": 1200,
+      "quantity": 50,
+      "category": "Home & Kitchen",
+      "id": "vWxY5zA6bCd"
+    },
+    {
+      "name": "French Press Coffee Maker",
+      "price": 1850,
+      "quantity": 16,
+      "category": "Home & Kitchen",
+      "id": "eFgH7iJ8kLm"
+    },
+    {
+      "name": "Digital Kitchen Scale",
+      "price": 899,
+      "quantity": 38,
+      "category": "Home & Kitchen",
+      "id": "nOpQ9rS0tUv"
+    },
+    {
+      "name": "Non-Stick Frying Pan 10-inch",
+      "price": 2100,
+      "quantity": 14,
+      "category": "Home & Kitchen",
+      "id": "wXyZ1aB2cDe"
+    },
+    {
+      "name": "Chef Knife Stainless Steel",
+      "price": 2500,
+      "quantity": 12,
+      "category": "Home & Kitchen",
+      "id": "fGhI3jK4lMn"
+    },
+    {
+      "name": "Electric Kettle 1.5L",
+      "price": 1799,
+      "quantity": 25,
+      "category": "Home & Kitchen",
+      "id": "oPqR5sT6uVw"
+    },
+    {
+      "name": "Silicone Cooking Utensils Set",
+      "price": 1499,
+      "quantity": 30,
+      "category": "Home & Kitchen",
+      "id": "xYzA7bC8dEf"
+    },
+    {
+      "name": "Food Storage Containers 10Pc",
+      "price": 1250,
+      "quantity": 45,
+      "category": "Home & Kitchen",
+      "id": "gHiJ9kL0mNo"
+    },
+    {
+      "name": "Memory Foam Bath Mat",
+      "price": 799,
+      "quantity": 40,
+      "category": "Home & Kitchen",
+      "id": "pQrS1tU2vWx"
+    },
+    {
+      "name": "Scented Soy Wax Candle",
+      "price": 499,
+      "quantity": 70,
+      "category": "Home & Kitchen",
+      "id": "yZaB3cD4eFg"
+    },
+    {
+      "name": "Ceramic Coffee Mug 15oz",
+      "price": 350,
+      "quantity": 80,
+      "category": "Home & Kitchen",
+      "id": "hIjK5lM6nOp"
+    },
+    {
+      "name": "Automatic Soap Dispenser",
+      "price": 1399,
+      "quantity": 20,
+      "category": "Home & Kitchen",
+      "id": "qRsT7uV8wXy"
+    },
+    {
+      "name": "Yoga Mat Eco-Friendly 6mm",
+      "price": 1600,
+      "quantity": 35,
+      "category": "Sports & Fitness",
+      "id": "zA_B9cD0eFg"
+    },
+    {
+      "name": "Adjustable Dumbbells Pair",
+      "price": 9500,
+      "quantity": 6,
+      "category": "Sports & Fitness",
+      "id": "iJkL1mN2oPq"
+    },
+    {
+      "name": "Resistance Bands Set of 5",
+      "price": 799,
+      "quantity": 60,
+      "category": "Sports & Fitness",
+      "id": "rStU3vW4xYz"
+    },
+    {
+      "name": "Foam Roller Muscle Massager",
+      "price": 850,
+      "quantity": 25,
+      "category": "Sports & Fitness",
+      "id": "aBcD5eF6gHi"
+    },
+    {
+      "name": "Running Waist Pack Belt",
+      "price": 650,
+      "quantity": 48,
+      "category": "Sports & Fitness",
+      "id": "jKlM7nO8pQr"
+    },
+    {
+      "name": "Sports Gym Bag with Shoe Slot",
+      "price": 1999,
+      "quantity": 18,
+      "category": "Sports & Fitness",
+      "id": "sTuV9wX0yZa"
+    },
+    {
+      "name": "Microfiber Quick Dry Towel",
+      "price": 450,
+      "quantity": 75,
+      "category": "Sports & Fitness",
+      "id": "bCdE1fG2hIj"
+    },
+    {
+      "name": "Skipping Rope Speed Cable",
+      "price": 399,
+      "quantity": 110,
+      "category": "Sports & Fitness",
+      "id": "kLmN3oP4qRs"
+    },
+    {
+      "name": "Ab Roller Wheel Workout",
+      "price": 899,
+      "quantity": 30,
+      "category": "Sports & Fitness",
+      "id": "tUvW5xY6zAb"
+    },
+    {
+      "name": "Push Up Bars Stand Ergonomic",
+      "price": 750,
+      "quantity": 32,
+      "category": "Sports & Fitness",
+      "id": "cDeF7gH8iJk"
+    },
+    {
+      "name": "Cycling Gloves Gel Padded",
+      "price": 850,
+      "quantity": 42,
+      "category": "Sports & Fitness",
+      "id": "lMnOP9qR0sT"
+    },
+    {
+      "name": "Ankle Weights 2pc Set",
+      "price": 1100,
+      "quantity": 20,
+      "category": "Sports & Fitness",
+      "id": "uVwX1yZ2aBc"
+    },
+    {
+      "name": "Sonic Electric Toothbrush",
+      "price": 3200,
+      "quantity": 22,
+      "category": "Personal Care",
+      "id": "dEfG3hI4jKl"
+    },
+    {
+      "name": "Beard Trimmer Cordless",
+      "price": 2400,
+      "quantity": 25,
+      "category": "Personal Care",
+      "id": "mNoP5qR6sTu"
+    },
+    {
+      "name": "Hair Dryer 2000W Ionic",
+      "price": 2999,
+      "quantity": 15,
+      "category": "Personal Care",
+      "id": "vWxY7zA8bCd"
+    },
+    {
+      "name": "Ceramic Hair Straightener",
+      "price": 2600,
+      "quantity": 14,
+      "category": "Personal Care",
+      "id": "eFgH9iJ0kLm"
+    },
+    {
+      "name": "Digital Bathroom Scale",
+      "price": 1350,
+      "quantity": 30,
+      "category": "Personal Care",
+      "id": "nOpQ1rS2tUv"
+    },
+    {
+      "name": "Essential Oil Diffuser 500ml",
+      "price": 1690,
+      "quantity": 28,
+      "category": "Personal Care",
+      "id": "wXyZ3aB4cDe"
+    },
+    {
+      "name": "Manicure Set 12-in-1 Case",
+      "price": 650,
+      "quantity": 55,
+      "category": "Personal Care",
+      "id": "fGhI5jK6lMn"
+    },
+    {
+      "name": "Jade Roller Face Massager",
+      "price": 499,
+      "quantity": 60,
+      "category": "Personal Care",
+      "id": "oPqR7sT8uVw"
+    },
+    {
+      "name": "Electric Callus Remover",
+      "price": 1450,
+      "quantity": 18,
+      "category": "Personal Care",
+      "id": "xYzA9bC0dEf"
+    },
+    {
+      "name": "Sleep Eye Mask Silk Blindfold",
+      "price": 350,
+      "quantity": 95,
+      "category": "Personal Care",
+      "id": "gHiJ1kL2mNo"
+    },
+    {
+      "name": "Water Flosser Cordless Oral",
+      "price": 2850,
+      "quantity": 16,
+      "category": "Personal Care",
+      "id": "pQrS3tU4vWx"
+    },
+    {
+      "name": "Makeup Brushes Set 14pc",
+      "price": 1199,
+      "quantity": 40,
+      "category": "Personal Care",
+      "id": "yZaB5cD6eFg"
+    },
+    {
+      "name": "Wireless Gaming Mouse RGB",
+      "price": 2400,
+      "quantity": 19,
+      "category": "Electronics",
+      "id": "hIjK7lM8nOp"
+    },
+    {
+      "name": "RGB Mouse Pad Extra Large",
+      "price": 1399,
+      "quantity": 33,
+      "category": "Electronics",
+      "id": "qRsT9uV0wXy"
+    },
+    {
+      "name": "Condenser Microphone USB",
+      "price": 4500,
+      "quantity": 14,
+      "category": "Electronics",
+      "id": "zA_B1cD2eFg"
+    },
+    {
+      "name": "Studio Monitor Headphones",
+      "price": 5800,
+      "quantity": 11,
+      "category": "Electronics",
+      "id": "iJkL3mN4oPq"
+    },
+    {
+      "name": "Fountain Pen Matte Black",
+      "price": 1500,
+      "quantity": 25,
+      "category": "Office Supplies",
+      "id": "rStU5vW6xYz"
+    },
+    {
+      "name": "Leather Desk Pad Blotter",
+      "price": 1150,
+      "quantity": 30,
+      "category": "Office Supplies",
+      "id": "aBcD7eF8gHi"
+    },
+    {
+      "name": "Expanding File Folder 24 Pockets",
+      "price": 899,
+      "quantity": 42,
+      "category": "Office Supplies",
+      "id": "jKlM9nO0pQr"
+    },
+    {
+      "name": "Heavy Duty Shipping Tape 6-Rolls",
+      "price": 699,
+      "quantity": 50,
+      "category": "Office Supplies",
+      "id": "sTuV1wX2yZa"
+    },
+    {
+      "name": "Bomber Flight Jacket",
+      "price": 3499,
+      "quantity": 15,
+      "category": "Apparel",
+      "id": "bCdE3fG4hIj"
+    },
+    {
+      "name": "Cargo Trousers Multi-Pocket",
+      "price": 2199,
+      "quantity": 24,
+      "category": "Apparel",
+      "id": "kLmN5oP6qRs"
+    },
+    {
+      "name": "Thermal Underwear Base Layer",
+      "price": 1299,
+      "quantity": 35,
+      "category": "Apparel",
+      "id": "tUvW7xY8zAb"
+    },
+    {
+      "name": "Memory Foam House Slippers",
+      "price": 799,
+      "quantity": 55,
+      "category": "Apparel",
+      "id": "cDeF9gH0iJk"
+    },
+    {
+      "name": "Cold Brew Iced Coffee Maker",
+      "price": 1999,
+      "quantity": 17,
+      "category": "Home & Kitchen",
+      "id": "lMnOP1qR2sT"
+    },
+    {
+      "name": "Stainless Steel Measuring Cups",
+      "price": 650,
+      "quantity": 40,
+      "category": "Home & Kitchen",
+      "id": "uVwX3yZ4aBc"
+    },
+    {
+      "name": "Magnetic Knife Strip 16-inch",
+      "price": 850,
+      "quantity": 28,
+      "category": "Home & Kitchen",
+      "id": "dEfG5hI6jKl"
+    },
+    {
+      "name": "Silicone Baking Mats Pair",
+      "price": 799,
+      "quantity": 50,
+      "category": "Home & Kitchen",
+      "id": "mNoP7qR8sTu"
+    },
+    {
+      "name": "Swimming Goggles Anti-Fog",
+      "price": 699,
+      "quantity": 45,
+      "category": "Sports & Fitness",
+      "id": "vWxY9zA0bCd"
+    },
+    {
+      "name": "Waterproof Dry Bag 20L",
+      "price": 1250,
+      "quantity": 22,
+      "category": "Sports & Fitness",
+      "id": "eFgH1iJ2kLm"
+    },
+    {
+      "name": "Hand Gripper Strength Trainer",
+      "price": 350,
+      "quantity": 90,
+      "category": "Sports & Fitness",
+      "id": "nOpQ3rS4tUv"
+    },
+    {
+      "name": "Pilates Ring Toning Circle",
+      "price": 999,
+      "quantity": 25,
+      "category": "Sports & Fitness",
+      "id": "wXyZ5aB6cDe"
+    },
+    {
+      "name": "Beard Oil and Balm Kit",
+      "price": 1150,
+      "quantity": 36,
+      "category": "Personal Care",
+      "id": "fGhI7jK8lMn"
+    },
+    {
+      "name": "Microcurrent Facial Roller",
+      "price": 1850,
+      "quantity": 15,
+      "category": "Personal Care",
+      "id": "oPqR9sT0uVw"
+    },
+    {
+      "name": "Electric Heating Pad for Back",
+      "price": 1599,
+      "quantity": 23,
+      "category": "Personal Care",
+      "id": "xYzA1bC2dEf"
+    },
+    {
+      "name": "Satin Pillowcase Pair for Hair",
+      "price": 699,
+      "quantity": 65,
+      "category": "Personal Care",
+      "id": "gHiJ3kL4mNo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
