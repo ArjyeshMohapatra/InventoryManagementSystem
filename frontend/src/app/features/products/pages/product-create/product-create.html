@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+
+    <input type="text" formControlName="name" placeholder="Product Name" class="border p-2 w-full rounded">
+
+    <input type="number" formControlName="price" placeholder="Price" class="border p-2 w-full rounded">
+
+    <input type="number" formControlName="quantity" placeholder="Quantity" class="border p-2 w-full rounded">
+
+    <input type="text" formControlName="category" placeholder="Category" class="border p-2 w-full rounded">
+
+    <button class="bg-blue-500 text-white px-4 py-2 rounded">
+
+        Save Product
+
+    </button>
+
+</form>

@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "name": "Mouse",
+      "price": 850,
+      "quantity": 25,
+      "category": "Electronics",
+      "id": "2"
+    },
+    {
+      "name": "Headphone",
+      "price": 3000,
+      "quantity": 15,
+      "category": "Electronics",
+      "id": "8x4YQrZc-yE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

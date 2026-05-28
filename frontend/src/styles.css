@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+@theme{
+    --color-primary:#1456ff;
+    --radius-card:12px;
+    --color-primary-hover:#14dfff;
+}
+
+.input-primary{
+    @apply w-full border border-gray-300 p-3 rounded-card mb-4 focus:outline-none focus:ring-2 focus:ring-primary transition;
+}

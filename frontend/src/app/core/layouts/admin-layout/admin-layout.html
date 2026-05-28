@@ -1,0 +1,49 @@
+<div class="flex h-screen bg-gray-100">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-slate-900 text-white">
+
+        <div class="p-4 text-2xl font-bold border-b border-slate-700">
+            Inventory
+        </div>
+
+        <nav class="p-4 space-y-2">
+
+            <a routerLink="/dashboard" class="block p-2 rounded hover:bg-slate-700">
+                Dashboard
+            </a>
+
+            <a routerLink="/products" class="block p-2 rounded hover:bg-slate-700">
+                Products
+            </a>
+
+            <a routerLink="/suppliers" class="block p-2 rounded hover:bg-slate-700">
+                Suppliers
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Area -->
+    <div class="flex-1 flex flex-col">
+
+        <!-- Navbar -->
+        <header class="h-16 bg-white shadow flex items-center px-6">
+
+            <h1 class="text-xl font-semibold">
+                Inventory Management
+            </h1>
+
+        </header>
+
+        <!-- Page Content -->
+        <main class="flex-1 overflow-auto p-6">
+
+            <router-outlet />
+
+        </main>
+
+    </div>
+
+    </div>
