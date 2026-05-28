@@ -7,11 +7,12 @@ import {
 import { Router } from '@angular/router';
 
 import { ProductQueryService } from '../../queryService/product.query.service';import { Product } from '../../models/product.model';
+import { ProductForm } from '../../components/product-form/product-form';
 
 @Component({
   selector: 'app-product-create',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ProductForm],
   templateUrl: './product-create.html'
 })
 export class ProductCreate {

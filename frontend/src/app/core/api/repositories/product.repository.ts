@@ -25,7 +25,7 @@ export class ProductRepository {
         return this.http.put<Product>(`${this.productsApi}/${product.id}`, product);
     }
 
-    getProductById(id: number): Observable<Product> {
+    getProductById(id: string): Observable<Product> {
         return this.http.get<Product>(`${this.productsApi}/${id}`);
     }
 

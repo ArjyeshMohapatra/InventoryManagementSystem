@@ -2,10 +2,10 @@
   "products": [
     {
       "name": "Mouse",
-      "price": 999,
+      "price": 1000,
       "quantity": 25,
       "category": "Electronics",
-      "id": "2"
+      "id": "nj3etry5t40"
     },
     {
       "name": "Headphone",
@@ -15,11 +15,11 @@
       "id": "8x4YQrZc-yE"
     },
     {
-      "name": "Charging Cable",
-      "price": 200,
-      "quantity": 30,
+      "name": "EarBuds",
+      "price": 2500,
+      "quantity": 10,
       "category": "Electronics",
-      "id": "t79IbOxnIaE"
+      "id": "hnU0-k9i_qw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

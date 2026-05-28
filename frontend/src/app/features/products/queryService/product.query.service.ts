@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductRepository } from '../../../core/api/repositories/product.repository';
 import { injectQuery, injectMutation, QueryClient } from '@tanstack/angular-query-experimental';
-import { lastValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -15,42 +15,51 @@ export class ProductQueryService {
   getProductsQuery() {
     return injectQuery(() => ({
       queryKey: ['products'],
-      queryFn: () => lastValueFrom(this.repo.getProducts()),
+      queryFn: () => firstValueFrom(this.repo.getProducts()),
       staleTime: 1000 * 60 * 2,
     }));
   }
 
-  getProductQuery(id: () => number) {
+  getProductQuery(id: () => string) {
     return injectQuery(() => ({
       queryKey: ['products', id()],
-      queryFn: () => lastValueFrom(this.repo.getProductById(id())),
+      queryFn: () => firstValueFrom(this.repo.getProductById(id())),
       staleTime: 1000 * 60 * 5, // Keep fresh for 5 minutes
     }));
   }
 
   addProductMutation() {
     return injectMutation(() => ({
-      mutationFn: (product: Product) => lastValueFrom(this.repo.addProduct(product)),
+      mutationFn: (product: Product) => firstValueFrom(this.repo.addProduct(product)),
       onSuccess: () => {
-        this.queryClient.invalidateQueries({ queryKey: ['products'] });
+        this.queryClient.invalidateQueries({ queryKey: ['products'], exact: false, refetchType: 'active' });
+      },
+      onError: (err) => {
+        console.error(err);
       }
     }));
   }
 
   updateProductMutation() {
     return injectMutation(() => ({
-      mutationFn: (product: Product) => lastValueFrom(this.repo.updateProduct(product)),
+      mutationFn: (product: Product) => firstValueFrom(this.repo.updateProduct(product)),
       onSuccess: () => {
-        this.queryClient.invalidateQueries({ queryKey: ['products'] });
+        this.queryClient.invalidateQueries({ queryKey: ['products'], exact: false, refetchType: 'active' });
+      },
+      onError: (err) => {
+        console.error(err);
       }
     }));
   }
 
   deleteProductMutation() {
     return injectMutation(() => ({
-      mutationFn: (id: number) => lastValueFrom(this.repo.deleteProduct(id)),
+      mutationFn: (id: number) => firstValueFrom(this.repo.deleteProduct(id)),
       onSuccess: () => {
-        this.queryClient.invalidateQueries({ queryKey: ['products'] });
+        this.queryClient.invalidateQueries({ queryKey: ['products'], exact: false, refetchType: 'active' });
+      },
+      onError: (err) => {
+        console.error(err);
       }
     }));
   }

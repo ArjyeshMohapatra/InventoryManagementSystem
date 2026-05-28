@@ -1,42 +1,8 @@
 <h1 class="text-2xl font-bold mb-6">Edit Product</h1>
 
-@if (productQuery.isPending()) {
-<div class="p-6 bg-white rounded shadow text-gray-500 animate-pulse">
-    Loading product information...
-</div>
-} @else if (productQuery.error()) {
-<div class="p-4 bg-red-100 text-red-700 rounded shadow">
-    Error: Could not retrieve product records. It may have been deleted by another user.
-</div>
-} @else {
-<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4 bg-white p-6 rounded shadow">
-    <div>
-        <label class="block mb-1 font-medium">Product Name</label>
-        <input type="text" formControlName="name" class="border p-2 w-full rounded">
-    </div>
-
-    <div>
-        <label class="block mb-1 font-medium">Price</label>
-        <input type="number" formControlName="price" class="border p-2 w-full rounded">
-    </div>
-
-    <div>
-        <label class="block mb-1 font-medium">Quantity</label>
-        <input type="number" formControlName="quantity" class="border p-2 w-full rounded">
-    </div>
-
-    <div>
-        <label class="block mb-1 font-medium">Category</label>
-        <input type="text" formControlName="category" class="border p-2 w-full rounded">
-    </div>
-
-    <button type="submit" [disabled]="updateMutation.isPending()"
-        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400">
-        @if (updateMutation.isPending()) {
-        Saving Updates...
-        } @else {
-        Update Product
-        }
-    </button>
-</form>
-}
+<app-product-form 
+[form]="form" 
+[loading]="updateMutation.isPending()" 
+buttonText="Update Product"
+(submitted)="submit()">
+</app-product-form>

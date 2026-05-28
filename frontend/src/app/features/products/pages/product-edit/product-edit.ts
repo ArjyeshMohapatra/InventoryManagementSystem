@@ -1,21 +1,16 @@
 import { Component, effect, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  ReactiveFormsModule
-} from '@angular/forms';
-
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-import { ProductRepository } from '../../../../core/api/repositories/product.repository';
-
+import { ProductForm } from '../../components/product-form/product-form';
 import { ProductQueryService } from '../../queryService/product.query.service';
 import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-product-edit',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ProductForm],
   templateUrl: './product-edit.html'
 })
 export class ProductEdit{
@@ -23,10 +18,9 @@ export class ProductEdit{
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-  private repo = inject(ProductRepository);
   private productQueryService = inject(ProductQueryService);
 
-  id = this.route.snapshot.params['id'];
+  id = String(this.route.snapshot.paramMap.get('id'));
 
   updateMutation = this.productQueryService.updateProductMutation();
   productQuery = this.productQueryService.getProductQuery(() => this.id);

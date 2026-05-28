@@ -16,6 +16,7 @@ export class ProductCardComponent {
   deleteMutation = this.productQueryService.deleteProductMutation();
 
   deleteProduct() {
-    this.deleteMutation.mutate(this.product().id)
+    if (!confirm('Delete product?')) return;
+    this.deleteMutation.mutate(this.product().id);
   }
 }
