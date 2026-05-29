@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "name": "EarBuds",
-      "price": 2500,
-      "quantity": 10,
-      "category": "Electronics",
-      "id": "hnU0-k9i_qw"
-    },
-    {
       "name": "Mouse",
       "price": 1000,
       "quantity": 25,
