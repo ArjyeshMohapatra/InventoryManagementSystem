@@ -685,6 +685,39 @@
       "quantity": 65,
       "category": "Personal Care",
       "id": "gHiJ3kL4mNo"
+    },
+    {
+      "name": "Hair Dryer",
+      "price": 2000,
+      "quantity": 10,
+      "category": "Electronics",
+      "id": "sbqXa8dKlSY"
+    }
+  ],
+  "categories": [
+    {
+      "id": "A7kP2mQ9xL1",
+      "name": "Electronics"
+    },
+    {
+      "id": "B4nT8vR3cY6",
+      "name": "Office Supplies"
+    },
+    {
+      "id": "C9wH5jK2pD8",
+      "name": "Apparel"
+    },
+    {
+      "id": "D1xM7qZ4uN3",
+      "name": "Home & Kitchen"
+    },
+    {
+      "id": "E6rL2bV8tF5",
+      "name": "Sports & Fitness"
+    },
+    {
+      "id": "F3yC9nW1sG7",
+      "name": "Personal Care"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
