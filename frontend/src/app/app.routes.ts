@@ -22,13 +22,18 @@ export const routes: Routes = [
           import('./features/dashboard/dashboard.routes')
           .then(r => r.DASHBOARD_ROUTES)
       }, */
-
       {
         path: 'products',
         loadChildren: () =>
           import('./features/products/product.route')
           .then(r => r.PRODUCT_ROUTES)
-      }
+      },
+      {
+        path: 'categories',
+        loadChildren: () =>
+          import('./features/categories/categories.route')
+          .then(r => r.CATEGORY_ROUTES)
+      },
 
     ]
   }

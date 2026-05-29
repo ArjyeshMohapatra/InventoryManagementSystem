@@ -2,12 +2,12 @@ import { Component, input, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-product-form',
+  selector: 'app-category-form',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './product-form.html'
+  templateUrl: './category-form.html',
 })
-export class ProductForm {
+export class CategoryForm {
   form = input.required<FormGroup>();
   loading = input(false);
   buttonText = input('Save');
