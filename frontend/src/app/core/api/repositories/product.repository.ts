@@ -13,23 +13,23 @@ export class ProductRepository {
 
   private productsApi = `${environment.apiUrl}/products`;
 
-    getProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>(this.productsApi);
+    getProductsByCategory(categoryId: string): Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.productsApi}?category=${categoryId}`);
     }
     
-    addProduct(product: Product): Observable<Product> {
+    addProductByCategory(product: Product): Observable<Product> {
         return this.http.post<Product>(this.productsApi, product);
     }
     
-    updateProduct(product: Product): Observable<Product> {
+    updateProductByCategory(product: Product): Observable<Product> {
         return this.http.put<Product>(`${this.productsApi}/${product.id}`, product);
     }
 
-    getProductById(id: string): Observable<Product> {
+    getProductByIdByCategory(id: string): Observable<Product> {
         return this.http.get<Product>(`${this.productsApi}/${id}`);
     }
 
-    deleteProduct(id: string) {
+    deleteProductByCategory(id: string) {
         return this.http.delete(`${this.productsApi}/${id}`);
       }
 

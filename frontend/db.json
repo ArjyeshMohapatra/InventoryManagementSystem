@@ -718,6 +718,10 @@
     {
       "id": "F3yC9nW1sG7",
       "name": "Personal Care"
+    },
+    {
+      "name": "Car Decor",
+      "id": "IsMzgEoeoGc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
