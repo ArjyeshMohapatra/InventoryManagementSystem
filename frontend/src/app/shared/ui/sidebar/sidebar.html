@@ -1,0 +1,75 @@
+@if (isOpen()) {
+<div 
+    class="fixed inset-x-0 top-16 bottom-0 bg-black/50 z-40"
+    (click)="closeSidebar.emit()">
+</div>
+}
+
+<aside 
+    class="fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] bg-slate-900 text-white transition-[width] duration-300 ease-in-out overflow-hidden flex flex-col shrink-0 w-16"
+    [class.w-64]="isOpen()"
+    [class.w-16]="!isOpen()">
+
+    <!-- Navigation Links -->
+    <nav class="p-2 space-y-2 flex-1 overflow-y-auto overflow-x-hidden">
+        <a routerLink="/dashboard" 
+        (click)="closeSidebar.emit()"
+        routerLinkActive="bg-slate-700 text-white" 
+        class="flex items-center p-3 rounded hover:bg-slate-700 group cursor-pointer whitespace-nowrap transition-colors"
+        [class.justify-center]="!isOpen()"
+        [class.justify-start]="isOpen()"
+        [title]="!isOpen() ? 'Dashboard' : ''">
+            <div class="w-8 flex justify-center shrink-0">
+                <fa-icon [icon]="faDashboard" class="text-lg"></fa-icon>
+            </div>
+            @if (isOpen()) {
+            <span class="ml-4 font-medium transition-all duration-300">Dashboard</span>
+            }
+        </a>
+        
+        <a routerLink="/products"
+        (click)="closeSidebar.emit()"
+        routerLinkActive="bg-slate-700 text-white" 
+        class="flex items-center p-3 rounded hover:bg-slate-700 group cursor-pointer whitespace-nowrap transition-colors"
+        [class.justify-center]="!isOpen()"
+        [class.justify-start]="isOpen()"
+        [title]="!isOpen() ? 'Products' : ''">
+            <div class="w-8 flex justify-center shrink-0">
+                <fa-icon [icon]="faProducts" class="text-lg"></fa-icon>
+            </div>
+            @if (isOpen()) {
+            <span class="ml-4 font-medium transition-all duration-300">Products</span>
+            }
+        </a>
+
+        <a routerLink="/suppliers" 
+        (click)="closeSidebar.emit()"
+        routerLinkActive="bg-slate-700 text-white" 
+        class="flex items-center p-3 rounded hover:bg-slate-700 group cursor-pointer whitespace-nowrap transition-colors"
+        [class.justify-center]="!isOpen()"
+        [class.justify-start]="isOpen()"
+        [title]="!isOpen() ? 'Suppliers' : ''">
+            <div class="w-8 flex justify-center shrink-0">
+                <fa-icon [icon]="faSuppliers" class="text-lg"></fa-icon>
+            </div>
+            @if (isOpen()) {
+            <span class="ml-4 font-medium transition-all duration-300">Suppliers</span>
+            }
+        </a>
+        
+        <a routerLink="/categories" 
+        (click)="closeSidebar.emit()"
+        routerLinkActive="bg-slate-700 text-white" 
+        class="flex items-center p-3 rounded hover:bg-slate-700 group cursor-pointer whitespace-nowrap transition-colors"
+        [class.justify-center]="!isOpen()"
+        [class.justify-start]="isOpen()"
+        [title]="!isOpen() ? 'Categories' : ''">
+            <div class="w-8 flex justify-center shrink-0">
+                <fa-icon [icon]="faCategories" class="text-lg"></fa-icon>
+            </div>
+            @if (isOpen()) {
+            <span class="ml-4 font-medium transition-all duration-300">Categories</span>
+            }
+        </a>
+    </nav>
+</aside>

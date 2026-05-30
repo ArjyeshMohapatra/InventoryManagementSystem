@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { Header, Sidebar } from '../../../shared/ui';
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [RouterOutlet, RouterLink],
+  standalone: true,
+  imports: [RouterOutlet, Header, Sidebar],
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
 })
-export class AdminLayout {}
+export class AdminLayout {
+  isSidebarOpen = signal(false);
+}

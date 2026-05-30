@@ -20,6 +20,14 @@ export class ProductQueryService {
     }));
   }
 
+  getProductsByCategoryQuery(categoryId: () => string) {
+    return injectQuery(() => ({
+      queryKey: ['products', 'category', categoryId()],
+      queryFn: () => firstValueFrom(this.repo.getProductsByCategory(categoryId())),
+      staleTime: 1000 * 60 * 2,
+    }));
+  }
+
   getProductQuery(id: () => string) {
     return injectQuery(() => ({
       queryKey: ['products', id()],

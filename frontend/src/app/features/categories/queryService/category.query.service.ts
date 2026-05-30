@@ -99,4 +99,14 @@ export class CategoryQueryService {
     }));
   }
 
+  deleteCategoryWithProductsMutation() {
+    return injectMutation(() => ({
+      mutationFn: (categoryId: string) => firstValueFrom(this.repo.deleteCategoryWithProducts(categoryId)),
+      onSuccess: () => {
+        this.queryClient.invalidateQueries({ queryKey: ['categories'] });
+        this.queryClient.invalidateQueries({ queryKey: ['products'] });
+      }
+    }));
+  }
+
 }

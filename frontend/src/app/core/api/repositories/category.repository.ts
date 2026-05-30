@@ -1,9 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, switchMap, forkJoin } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { Category } from '../../../features/categories/models/category.model';
+import { ProductRepository } from './product.repository';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Category } from '../../../features/categories/models/category.model';
 export class CategoryRepository {
 
   private http = inject(HttpClient);
+  private productRepo = inject(ProductRepository);
 
   private categoriesApi = `${environment.apiUrl}/categories`;
 
@@ -32,6 +34,16 @@ export class CategoryRepository {
 
   deleteCategory(id: string) {
     return this.http.delete(`${this.categoriesApi}/${id}`);
+  }
+
+  deleteCategoryWithProducts(categoryId: string) {
+    return this.productRepo.getProductsByCategory(categoryId).pipe(
+      switchMap(products => {
+        const deletes = products.map(product => this.productRepo.deleteProduct(product.id));
+        return forkJoin(deletes);
+      }),
+      switchMap(() => this.deleteCategory(categoryId))
+    );
   }
 
 }

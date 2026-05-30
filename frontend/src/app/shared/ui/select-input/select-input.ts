@@ -1,4 +1,5 @@
 import { Component, input, output } from '@angular/core';
+import { SelectOption } from '../../models/select.dropdown.model';
 
 @Component({
   selector: 'app-select-input',
@@ -8,9 +9,9 @@ import { Component, input, output } from '@angular/core';
 })
 export class SelectInput {
   value = input('');
-  options = input<string[]>([]);
+  options = input<SelectOption[]>([]);
   valueChanged = output<string>();
-  
+
   onChange(event: Event) {
     const select = event.target as HTMLSelectElement;
     this.valueChanged.emit(select.value);

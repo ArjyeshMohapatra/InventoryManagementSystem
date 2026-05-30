@@ -29,7 +29,13 @@
             Category
         </label>
 
-        <input type="text" formControlName="category" [readonly]="loading()" class="border p-2 w-full rounded">
+        <select formControlName="category" class="border p-2 w-full rounded">
+            <option value="">Select Category</option>
+        
+            @for (category of categoryOptions(); track category.value) {
+            <option [value]="category.value"> {{ category.label }} </option>
+            }
+        </select>
     </div>
 
     <button type="submit" [disabled]="loading()" class="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400">

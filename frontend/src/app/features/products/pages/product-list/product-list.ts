@@ -1,10 +1,8 @@
 import { Component, inject, signal, computed, effect, input } from '@angular/core';
 import { ProductQueryService } from '../../queryService/product.query.service';
+import { CategoryQueryService } from '../../../categories/queryService/category.query.service';
 import { RouterLink } from '@angular/router';
-import { SearchInput } from '../../../../shared/ui/search-input/search-input';
-import { SelectInput } from '../../../../shared/ui/select-input/select-input';
-import { Table } from '../../../../shared/ui/table/table';
-import { Modal } from '../../../../shared/ui/modal/modal';
+import { SearchInput, SelectInput, Table, Modal } from '../../../../shared/ui';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -25,7 +23,10 @@ export class ProductList {
   actions = true;
 
   private productQueryService = inject(ProductQueryService);
+  private categoryQueryService = inject(CategoryQueryService);
+
   productsQuery = this.productQueryService.getProductsQuery();
+  categoriesQuery = this.categoryQueryService.getCategoriesQuery();
 
   searchTerm = signal(''); // debounced value
   searchInput = signal(''); // immediate typing
@@ -44,6 +45,15 @@ export class ProductList {
       onCleanup(() => { clearTimeout(timer) });
     });
   }
+
+  categoryMap = computed(() => {
+    const categories = this.categoriesQuery.data() ?? [];
+    return Object.fromEntries(categories.map(category => [
+      category.id,
+      category.name
+    ]));
+  });
+
   filteredProducts = computed(() => {
     const products = this.productsQuery.data() ?? [];
     const term = this.searchTerm().toLowerCase().trim();
@@ -54,12 +64,16 @@ export class ProductList {
       const matchesCategory = !category || product.category === category;
 
       return (matchesSearch && matchesCategory);
-    });
+    }).map(product => ({ ...product, category: this.categoryMap()[product.category] ?? 'Unknown' }));
   });
 
   categories = computed(() => {
-    const products = this.productsQuery.data() ?? [];
-    return [...new Set(products.map(product => product.category))].sort()
+    const categories = this.categoriesQuery.data() ?? [];
+    return categories.map(category => ({
+      label: category.name,
+      value: category.id
+
+    }));
   });
 
   openDeleteModal(product: Product) { 
