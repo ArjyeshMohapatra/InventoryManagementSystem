@@ -1,12 +1,10 @@
 <div class="flex h-screen bg-gray-100 overflow-hidden">
-    <app-sidebar class="contents"
-        [isOpen]="isSidebarOpen()" 
-        (closeSidebar)="isSidebarOpen.set(false)">
+    <app-sidebar class="contents" [isOpen]="isSidebarOpen()" (closeSidebar)="isSidebarOpen.set(false)">
     </app-sidebar>
 
     <div class="flex-1 flex flex-col min-w-0">
         <app-header (toggleSidebar)="isSidebarOpen.set(!isSidebarOpen())" />
-        
+
         <main class="relative flex-1 overflow-y-auto overflow-x-hidden ml-16">
             <!-- Top Fade -->
             <div class="pointer-events-none sticky top-0 z-10 h-6 md:h-10 bg-linear-to-b from-gray-100 to-transparent">
@@ -18,7 +16,8 @@
             </div>
 
             <!-- Bottom Fade -->
-            <div class="pointer-events-none sticky bottom-0 z-10 h-6 md:h-10 bg-linear-to-t from-gray-100 to-transparent">
+            <div
+                class="pointer-events-none sticky bottom-0 z-10 h-6 md:h-10 bg-linear-to-t from-gray-100 to-transparent">
             </div>
         </main>
         <!-- <app-footer /> -->
