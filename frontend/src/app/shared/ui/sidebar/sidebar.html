@@ -2,9 +2,14 @@
 <div class="fixed inset-0 bg-black/50 z-40" (click)="closeSidebar.emit()"></div>
 }
 
-<aside
-    class="fixed left-0 top-16 z-50 h-[calc(100vh-4rem)] bg-slate-900 text-white transition-[width] duration-300 ease-in-out overflow-hidden flex flex-col shrink-0 w-16"
-    [class.w-50]="isOpen()" [class.w-16]="!isOpen()">
+<aside class="fixed md:fixed z-50 bg-slate-900 text-white
+           transition-all duration-300 ease-in-out
+           overflow-hidden flex flex-col
+           top-16
+           lg:left-0
+           lg:h-[calc(100vh-4rem)]
+           w-full lg:w-auto" [class.h-0]="!isOpen()" [class.h-64]="isOpen()" [class.md:h-[calc(100vh-4rem)]]="true"
+    [class.md:w-50]="isOpen()" [class.md:w-16]="!isOpen()">
 
     <!-- Navigation Links -->
     <nav class="p-2 space-y-2 flex-1 overflow-y-auto overflow-x-hidden">

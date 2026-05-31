@@ -1,9 +1,12 @@
-<header
-    class="h-16 bg-slate-900 lg:bg-white text-white lg:text-slate-900 shadow-sm flex items-center px-4 md:px-6 shrink-0">
-    <button class="mr-4 text-gray-200 lg:text-slate-600 hover:text-white lg:hover:text-slate-900"
+<header class="h-16 bg-slate-900 text-white shadow-sm flex items-center px-4 md:px-6 shrink-0">
+    <button class="hidden md:block mr-4 text-gray-200 hover:text-white lg:hover:text-slate-900"
         (click)="toggleSidebar.emit()">
         <fa-icon [icon]="faBars" class="text-xl"></fa-icon>
     </button>
-    <h1 class="text-xl font-semibold hidden lg:block">Inventory Management</h1>
-    <h1 class="text-lg font-semibold lg:hidden">Inventory Management</h1>
+    <h1 class="text-lg lg:text-xl font-semibold flex-1">
+        Inventory Management
+    </h1>
+    <button class="md:hidden text-gray-200 hover:text-white" (click)="toggleSidebar.emit()">
+        <fa-icon [icon]="faBars" class="text-xl"></fa-icon>
+    </button>
 </header>
