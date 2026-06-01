@@ -13,14 +13,23 @@ categories = signal<Category[]>([]);
 selectedCategory = signal<Category | null>(null);
 loading = signal(false);
 error = signal<string | null>(null);
+lastLoaded = signal(0);
+ttl = 1000 * 60 * 2;
 
-loadCategories() {
+loadCategories(force = false) {
+    const hasCategories = this.categories().length > 0;
+    const cacheAge = Date.now() - this.lastLoaded();
+    const cacheValid = cacheAge < this.ttl;
+
+    if (!force && hasCategories && cacheValid) return;
+
     this.loading.set(true);
     this.error.set(null);
   
     this.catRepo.getCategories().subscribe({
         next: (categories) => {
           this.categories.set(categories);
+          this.lastLoaded.set(Date.now());
           this.loading.set(false);
         },
         error: () => {

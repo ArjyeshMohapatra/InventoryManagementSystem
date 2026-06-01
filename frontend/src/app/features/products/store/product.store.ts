@@ -11,14 +11,24 @@ export class ProductStore {
     selectedProduct = signal<Product | null>(null);
     loading = signal(false);
     error = signal<string | null>(null);
+    lastLoaded = signal(0);
+    ttl = 1000 * 60 * 2;
 
-    loadProducts() {
+    // user has force refreshed or not
+    loadProducts(force = false) {
+        const hasProducts = this.products().length > 0;
+        const cacheAge = Date.now() - this.lastLoaded();
+        const cacheValid = cacheAge < this.ttl;
+
+        if (!force && hasProducts && cacheValid) return;
+
         this.loading.set(true);
         this.error.set(null);
 
         this.prodRepo.getProducts().subscribe({
             next: (products) => {
                 this.products.set(products);
+                this.lastLoaded.set(Date.now());
                 this.loading.set(false);
 
             },
