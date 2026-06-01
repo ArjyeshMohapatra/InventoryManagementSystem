@@ -2,7 +2,7 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SearchInput } from '../../../../shared/ui/search-input/search-input';
 import { Table } from '../../../../shared/ui/table/table';
-import { CategoryQueryService } from '../../queryService/category.query.service';
+import { CategoryStore } from '../../store/category.store';
 import { Modal } from '../../../../shared/ui/modal/modal';
 import { ProductRepository } from '../../../../core/api/repositories/product.repository';
 import { lastValueFrom } from 'rxjs';
@@ -14,15 +14,14 @@ import { lastValueFrom } from 'rxjs';
   templateUrl: './category-list.html',
 })
 export class CategoryList {
-  private categoryQueryService = inject(CategoryQueryService);
+  private categoryStore = inject(CategoryStore);
   private productRepo = inject(ProductRepository);
 
-  categoriesQuery = this.categoryQueryService.getCategoriesQuery();
+  catStore = this.categoryStore;
   searchInput = signal('');
   searchTerm = signal('');
   columns = ['name'];
   actions = true;
-  deleteMutation = this.categoryQueryService.deleteCategoryWithProductsMutation();
   selectedCategory = signal<any>(null);
   showDeleteModal = signal(false);
   deleteMessage = signal('');
@@ -33,10 +32,11 @@ export class CategoryList {
       const timer = setTimeout(() => this.searchTerm.set(value), 300);
       onCleanup(() => clearTimeout(timer));
     });
+    this.catStore.loadCategories();
   }
 
   filteredCategories = computed(() => {
-    const categories = this.categoriesQuery.data() ?? [];
+    const categories = this.catStore.categories();
     const term = this.searchTerm().toLowerCase().trim();
     return categories.filter((category) => !term || category.name.toLowerCase().includes(term));
   });
@@ -61,10 +61,9 @@ export class CategoryList {
     const category = this.selectedCategory();
     if (!category) return;
   
-    this.deleteMutation.mutate(category.id, {
-      onSuccess: () => {
+    this.catStore.deleteCategory(category.id, () => {
         this.closeDeleteModal();
       },
-    });
+    );
   }
 }

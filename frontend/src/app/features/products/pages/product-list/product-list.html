@@ -17,11 +17,11 @@
     </button>
 </div>
 
-@if (productsQuery.isPending()) {
+@if (prodStore.loading()) {
 <p class="text-gray-500 animate-pulse">Loading products...</p>
 }
 
-@else if (productsQuery.error()) {
+@else if (prodStore.error()) {
 <div class="p-4 bg-red-100 text-red-700 rounded">
     Failed to load products. Please try again later.
 </div>

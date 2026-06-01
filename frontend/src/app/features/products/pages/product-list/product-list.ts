@@ -1,6 +1,6 @@
 import { Component, inject, signal, computed, effect, input } from '@angular/core';
-import { ProductQueryService } from '../../queryService/product.query.service';
-import { CategoryQueryService } from '../../../categories/queryService/category.query.service';
+import { ProductStore } from '../../store/product.store';
+import { CategoryStore } from 'src/app/features/categories/store/category.store';
 import { RouterLink } from '@angular/router';
 import { SearchInput, SelectInput, Table, Modal } from '../../../../shared/ui';
 import { Product } from '../../models/product.model';
@@ -22,11 +22,11 @@ export class ProductList {
 
   actions = true;
 
-  private productQueryService = inject(ProductQueryService);
-  private categoryQueryService = inject(CategoryQueryService);
+  private productStore = inject(ProductStore);
+  private categoryStore = inject(CategoryStore);
 
-  productsQuery = this.productQueryService.getProductsQuery();
-  categoriesQuery = this.categoryQueryService.getCategoriesQuery();
+  prodStore = this.productStore;
+  catStore = this.categoryStore;
 
   searchTerm = signal(''); // debounced value
   searchInput = signal(''); // immediate typing
@@ -35,19 +35,17 @@ export class ProductList {
   selectedProduct = signal<Product | null>(null);
   showDeleteModal = signal(false);
 
-  deleteMutation = this.productQueryService.deleteProductMutation();
-
-
   constructor() {
     effect((onCleanup) => {
       const value = this.searchInput();
       const timer = setTimeout(() => { this.searchTerm.set(value) }, 300);
       onCleanup(() => { clearTimeout(timer) });
     });
+    this.prodStore.loadProducts();
   }
 
   categoryMap = computed(() => {
-    const categories = this.categoriesQuery.data() ?? [];
+    const categories = this.catStore.categories();
     return Object.fromEntries(categories.map(category => [
       category.id,
       category.name
@@ -55,7 +53,7 @@ export class ProductList {
   });
 
   filteredProducts = computed(() => {
-    const products = this.productsQuery.data() ?? [];
+    const products = this.prodStore.products();
     const term = this.searchTerm().toLowerCase().trim();
     const category = this.selectedCategory();
 
@@ -68,7 +66,7 @@ export class ProductList {
   });
 
   categories = computed(() => {
-    const categories = this.categoriesQuery.data() ?? [];
+    const categories = this.catStore.categories();
     return categories.map(category => ({
       label: category.name,
       value: category.id
@@ -87,11 +85,10 @@ export class ProductList {
   deleteProduct() {
     const product = this.selectedProduct();
     if (product) {
-      this.deleteMutation.mutate(product.id, {
-        onSuccess: () => {
+      this.prodStore.deleteProduct(product.id, () => {
           this.closeDeleteModal();
         }
-      });
+      );
     }
   }
 }

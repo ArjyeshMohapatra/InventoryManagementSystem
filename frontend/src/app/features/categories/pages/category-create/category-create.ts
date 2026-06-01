@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { CategoryQueryService } from '../../queryService/category.query.service';
+import { CategoryStore } from '../../store/category.store';
 import { Category } from '../../models/category.model';
 import { CategoryForm } from '../../components/category-form/category-form';
 
@@ -16,20 +16,19 @@ export class CategoryCreate {
 
   private fb = inject(FormBuilder);
 
-  private categoryQueryService = inject(CategoryQueryService);
+  private categoryStore = inject(CategoryStore);
   private router = inject(Router);
 
-  addMutation = this.categoryQueryService.addCategoryMutation();
+  catStore = this.categoryStore;
 
   form = this.fb.group({name: ['']});
 
   submit() {
-    if (this.form.invalid || this.addMutation.isPending()) return;
-    this.addMutation.mutate(this.form.value as Category, {
-      onSuccess: () => {
+    if (this.form.invalid || this.catStore.loading()) return;
+    this.catStore.addCategory(this.form.value as Category, () => {
         this.router.navigate(['/categories']);
       }
-    });
+    );
   }
 
 }

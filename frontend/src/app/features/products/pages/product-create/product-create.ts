@@ -1,12 +1,9 @@
 import { Component, inject } from '@angular/core';
-import {
-  FormBuilder,
-  ReactiveFormsModule
-} from '@angular/forms';
-
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ProductQueryService } from '../../queryService/product.query.service';import { Product } from '../../models/product.model';
+import { ProductStore } from '../../store/product.store';
+import { Product } from '../../models/product.model';
 import { ProductForm } from '../../components/product-form/product-form';
 
 @Component({
@@ -19,10 +16,10 @@ export class ProductCreate {
 
   private fb = inject(FormBuilder);
 
-  private productQueryService = inject(ProductQueryService);
+  public productStore = inject(ProductStore);
   private router = inject(Router);
 
-  addMutation = this.productQueryService.addProductMutation();
+  prodStore = this.productStore;
 
   form = this.fb.group({
 
@@ -34,12 +31,11 @@ export class ProductCreate {
   });
 
   submit() {
-    if (this.form.invalid || this.addMutation.isPending()) return;
-    this.addMutation.mutate(this.form.value as Product, {
-      onSuccess: () => {
+    if (this.form.invalid || this.prodStore.loading()) return;
+    this.prodStore.addProduct(this.form.value as Product, () => {
         this.router.navigate(['/products']);
       }
-    });
+    );
   }
 
 }

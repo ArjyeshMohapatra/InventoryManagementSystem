@@ -2,7 +2,7 @@
 
 <app-product-form 
 [form]="form" 
-[loading]="addMutation.isPending()" 
+[loading]="prodStore.loading()" 
 submitText="Save Product" 
 (submitted)="submit()">
 </app-product-form>

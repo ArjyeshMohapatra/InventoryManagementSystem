@@ -1,4 +1,4 @@
 <h1 class="text-2xl font-bold mb-6">Edit Category</h1>
 
-<app-category-form [form]="form" [loading]="updateMutation.isPending()" buttonText="Update" (submitted)="submit()">
+<app-category-form [form]="form" [loading]="catStore.loading()" buttonText="Update" (submitted)="submit()">
 </app-category-form>

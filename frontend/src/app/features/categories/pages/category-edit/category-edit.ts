@@ -4,7 +4,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { CategoryForm } from '../../components/category-form/category-form';
-import { CategoryQueryService } from '../../queryService/category.query.service';
+import { CategoryStore } from '../../store/category.store';
 import { Category } from '../../models/category.model';
 
 @Component({
@@ -18,19 +18,18 @@ export class CategoryEdit{
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-  private categoryQueryService = inject(CategoryQueryService);
+  private categoryStore = inject(CategoryStore);
+
+  catStore = this.categoryStore;
 
   id = String(this.route.snapshot.paramMap.get('id'));
-
-  updateMutation = this.categoryQueryService.updateCategoryMutation();
-  categoryQuery = this.categoryQueryService.getCategoryQuery(() => this.id);
 
   form = this.fb.group({name: ['']});
   
   constructor() {
+    this.catStore.loadCategoryById(this.id);
     effect(() => {
-      // Reactively patch the form whenever the cached data resolves successfully
-      const categoryData = this.categoryQuery.data();
+      const categoryData = this.catStore.selectedCategory();
       if (categoryData) this.form.patchValue(categoryData);
     });
   }
@@ -39,11 +38,9 @@ export class CategoryEdit{
     if (this.form.invalid) return;
     const updatedCategory = { ...this.form.value, id: String(this.id) };
     
-    this.updateMutation.mutate(updatedCategory as Category, {
-      onSuccess: () => {
-        // Navigate away ONLY after the backend has officially updated the item!
+    this.catStore.updateCategory(updatedCategory as Category, () => {
         this.router.navigate(['/categories']);
       }
-    });
+    );
   }
 }
