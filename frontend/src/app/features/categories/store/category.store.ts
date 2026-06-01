@@ -1,27 +1,22 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { Category } from '../models/category.model';
 import { CategoryRepository } from '../../../core/api/repositories/category.repository';
+import { CacheStore } from 'src/app/shared/store/cache.store';
 
 @Injectable({
 providedIn:'root'
 })
-export class CategoryStore {
+export class CategoryStore extends CacheStore {
 
 private catRepo = inject(CategoryRepository);
 
 categories = signal<Category[]>([]);
 selectedCategory = signal<Category | null>(null);
-loading = signal(false);
-error = signal<string | null>(null);
-lastLoaded = signal(0);
-ttl = 1000 * 60 * 2;
 
 loadCategories(force = false) {
     const hasCategories = this.categories().length > 0;
-    const cacheAge = Date.now() - this.lastLoaded();
-    const cacheValid = cacheAge < this.ttl;
 
-    if (!force && hasCategories && cacheValid) return;
+    if (!force && this.isCacheValid(hasCategories)) return;
 
     this.loading.set(true);
     this.error.set(null);

@@ -1,26 +1,21 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductRepository } from 'src/app/core/api/repositories/product.repository';
+import { CacheStore } from 'src/app/shared/store/cache.store';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductStore {
+export class ProductStore extends CacheStore {
     private prodRepo = inject(ProductRepository);
     products = signal<Product[]>([]);
     selectedProduct = signal<Product | null>(null);
-    loading = signal(false);
-    error = signal<string | null>(null);
-    lastLoaded = signal(0);
-    ttl = 1000 * 60 * 2;
 
     // user has force refreshed or not
     loadProducts(force = false) {
         const hasProducts = this.products().length > 0;
-        const cacheAge = Date.now() - this.lastLoaded();
-        const cacheValid = cacheAge < this.ttl;
 
-        if (!force && hasProducts && cacheValid) return;
+        if (!force && this.isCacheValid(hasProducts)) return;
 
         this.loading.set(true);
         this.error.set(null);
