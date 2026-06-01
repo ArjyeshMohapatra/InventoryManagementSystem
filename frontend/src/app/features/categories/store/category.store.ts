@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Category } from '../models/category.model';
 import { CategoryRepository } from '../../../core/api/repositories/category.repository';
 import { CacheStore } from 'src/app/shared/store/cache.store';
+import { finalize, retry } from 'rxjs';
 
 @Injectable({
 providedIn:'root'
@@ -17,19 +18,33 @@ loadCategories(force = false) {
     const hasCategories = this.categories().length > 0;
 
     if (!force && this.isCacheValid(hasCategories)) return;
+    if (this.fetching()) return;
 
-    this.loading.set(true);
+    if (this.categories().length) {
+        this.refreshing.set(true);
+    } else {
+        this.loading.set(true);
+    }
+
     this.error.set(null);
-  
-    this.catRepo.getCategories().subscribe({
+    this.fetching.set(true);
+    this.catRepo.getCategories().pipe(
+        retry({
+            count: this.retryCount,
+            delay: this.retryDelay
+        }),
+        finalize(() => {
+            this.loading.set(false);
+            this.refreshing.set(false);
+            this.fetching.set(false);
+        })
+    ).subscribe({
         next: (categories) => {
           this.categories.set(categories);
           this.lastLoaded.set(Date.now());
-          this.loading.set(false);
         },
         error: () => {
-          this.error.set('Failed to load categories');
-          this.loading.set(false);
+          this.error.set('Failed to load categories'); 
         }
       });
     }
@@ -38,74 +53,84 @@ loadCategoryById(id:string) {
     this.loading.set(true);
     this.error.set(null);
     
-    this.catRepo.getCategoryById(id).subscribe({
+    this.catRepo.getCategoryById(id).pipe(
+        finalize(() => {
+          this.loading.set(false);
+        })
+      ).subscribe({
         next: (category) => {
             this.selectedCategory.set(category);
-            this.loading.set(false);
         },
         error: () => {
             this.error.set('Failed to load category');
-            this.loading.set(false);
         }
         });
     }
 
 addCategory(category: Category, onSuccess?: () => void) { 
     this.loading.set(true);
-    this.catRepo.addCategory(category).subscribe({
+    this.catRepo.addCategory(category).pipe(
+        finalize(() => {
+          this.loading.set(false);
+        })
+      ).subscribe({
         next: (created) => {
             this.categories.update(categories => [...categories, created]);
-            this.loading.set(false);
             onSuccess?.();
         },
         error: () => {
             this.error.set('Failed to add category');
-            this.loading.set(false);
         }
         });
     }
 
 updateCategory(category: Category,onSuccess?: () => void) {
     this.loading.set(true);
-    this.catRepo.updateCategory(category).subscribe({
+    this.catRepo.updateCategory(category).pipe(
+        finalize(() => {
+          this.loading.set(false);
+        })
+      ).subscribe({
         next: (updated) => {
             this.categories.update(categories => categories.map(existing => existing.id === updated.id ? updated : existing));
-            this.loading.set(false);
             onSuccess?.();
         },
         error: () => {
             this.error.set('Failed to update category');
-            this.loading.set(false);
         }
         });
     }
 
 deleteCategory(id: string, onSuccess?: () => void) {
     this.loading.set(true);
-    this.catRepo.deleteCategory(id).subscribe({
+    this.catRepo.deleteCategory(id).pipe(
+        finalize(() => {
+          this.loading.set(false);
+        })
+      ).subscribe({
         next: () => {
             this.categories.update(categories => categories.filter(category => category.id !== id));
-            this.loading.set(false);
             onSuccess?.();
         },
         error: () => {
             this.error.set('Failed to delete category');
-            this.loading.set(false);
         }
         });
     }
 
 deleteCategoryWithProducts(id: string, onSuccess?: () => void) {
     this.loading.set(true);
-    this.catRepo.deleteCategoryWithProducts(id).subscribe({
+    this.catRepo.deleteCategoryWithProducts(id).pipe(
+        finalize(() => {
+          this.loading.set(false);
+        })
+      ).subscribe({
         next: () => {
             this.categories.update(categories => categories.filter(category => category.id !== id));
-            this.loading.set(false);
             onSuccess?.();
         },
         error: () => {
             this.error.set('Failed to delete category');
-            this.loading.set(false);
         }
         });
     }

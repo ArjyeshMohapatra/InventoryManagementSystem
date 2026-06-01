@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductRepository } from 'src/app/core/api/repositories/product.repository';
 import { CacheStore } from 'src/app/shared/store/cache.store';
+import { retry, finalize } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -16,35 +17,51 @@ export class ProductStore extends CacheStore {
         const hasProducts = this.products().length > 0;
 
         if (!force && this.isCacheValid(hasProducts)) return;
+        if (this.fetching()) return;
 
-        this.loading.set(true);
+        if (this.products().length) {
+            this.refreshing.set(true);
+        } else {
+            this.loading.set(true);
+        }
         this.error.set(null);
 
-        this.prodRepo.getProducts().subscribe({
+        this.fetching.set(true);
+        this.prodRepo.getProducts().pipe(
+            retry({
+                count: this.retryCount,
+                delay: this.retryDelay
+            }),
+            finalize(() => {
+                this.loading.set(false);
+                this.refreshing.set(false);
+                this.fetching.set(false);
+            })
+        ).subscribe({
             next: (products) => {
                 this.products.set(products);
                 this.lastLoaded.set(Date.now());
-                this.loading.set(false);
-
             },
             error: () => {
                 this.error.set('Failed to load products');
-                this.loading.set(false);
-            }
+            },
+
         });
     }
 
     loadProductById(id: string) {
         this.loading.set(true);
         this.error.set(null);
-        this.prodRepo.getProductById(id).subscribe({
+        this.prodRepo.getProductById(id).pipe(
+            finalize(() => {
+              this.loading.set(false);
+            })
+          ).subscribe({
             next: (product) => {
                 this.selectedProduct.set(product);
-                this.loading.set(false);
             },
             error: () => {
                 this.error.set('Failed to load product');
-                this.loading.set(false);
             }
         });
     }
@@ -55,45 +72,51 @@ export class ProductStore extends CacheStore {
 
     addProduct(product: Product, onSuccess?: () => void) {
         this.loading.set(true);
-        this.prodRepo.addProduct(product).subscribe({
+        this.prodRepo.addProduct(product).pipe(
+            finalize(() => {
+              this.loading.set(false);
+            })
+          ).subscribe({
             next: (created) => {
                 this.products.update(products => [...products, created]);
-                this.loading.set(false);
                 onSuccess?.();
             },
             error: () => {
                 this.error.set('Failed to add product');
-                this.loading.set(false);
             }
         });
     }
 
     updateProduct(product: Product, onSuccess?: () => void) {
         this.loading.set(true);
-        this.prodRepo.updateProduct(product).subscribe({
+        this.prodRepo.updateProduct(product).pipe(
+            finalize(() => {
+              this.loading.set(false);
+            })
+          ).subscribe({
             next: (updated) => {
                 this.products.update(products => products.map(existing => existing.id === updated.id ? updated : existing));
-                this.loading.set(false);
                 onSuccess?.();
             },
             error: () => {
                 this.error.set('Failed to update product');
-                this.loading.set(false);
             }
         });
     }
 
     deleteProduct(id: string, onSuccess?: () => void) {
         this.loading.set(true);
-        this.prodRepo.deleteProduct(id).subscribe({
+        this.prodRepo.deleteProduct(id).pipe(
+            finalize(() => {
+              this.loading.set(false);
+            })
+          ).subscribe({
             next: () => {
                 this.products.update(products => products.filter(product => product.id !== id));
-                this.loading.set(false);
                 onSuccess?.();
             },
             error: () => {
                 this.error.set('Failed to delete product');
-                this.loading.set(false);
             }
         });
     }
