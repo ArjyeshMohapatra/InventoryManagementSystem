@@ -4,6 +4,7 @@ import { CategoryStore } from 'src/app/features/categories/store/category.store'
 import { RouterLink } from '@angular/router';
 import { SearchInput, SelectInput, Table, Modal } from '../../../../shared/ui';
 import { Product } from '../../models/product.model';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-product-list',
@@ -42,6 +43,7 @@ export class ProductList {
       onCleanup(() => { clearTimeout(timer) });
     });
     this.prodStore.loadProducts();
+    this.catStore.loadCategories(); // Added this
   }
 
   categoryMap = computed(() => {
@@ -78,10 +80,12 @@ export class ProductList {
     this.selectedProduct.set(product);
     this.showDeleteModal.set(true); 
   }
+
   closeDeleteModal() { 
     this.showDeleteModal.set(false);
     this.selectedProduct.set(null);
   }
+
   deleteProduct() {
     const product = this.selectedProduct();
     if (product) {
@@ -90,5 +94,30 @@ export class ProductList {
         }
       );
     }
+  }
+
+  swapProducts(event: CdkDragDrop<any[]>) {
+    const previous = event.previousIndex;
+    const current = event.currentIndex;
+  
+    if (previous === current) return;
+  
+    const filtered = this.filteredProducts();
+    const sourceDisplay = filtered[previous];
+    const targetDisplay = filtered[current];
+  
+    // Find the original raw objects from the store using their IDs
+    const allProducts = this.prodStore.products();
+    const source = allProducts.find(p => p.id === sourceDisplay.id);
+    const target = allProducts.find(p => p.id === targetDisplay.id);
+
+    if (!source || !target) return;
+  
+    const sourceOrder = source.order;
+    const targetOrder = target.order;
+  
+    // Update using the original objects to preserve the category IDs
+    this.prodStore.updateProduct({...source, order: targetOrder});
+    this.prodStore.updateProduct({...target, order: sourceOrder});
   }
 }

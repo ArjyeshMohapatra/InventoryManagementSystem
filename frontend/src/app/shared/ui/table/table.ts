@@ -4,17 +4,25 @@ import {
   Renderer2,
   ElementRef,
   ChangeDetectorRef,
-  inject
+  inject,
+  signal,
+  output
  } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
+import { CdkDropList, CdkDrag, CdkDragHandle, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faGripVertical } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, TitleCasePipe, CommonModule, MatSort, MatSortHeader, MatPaginator, MatPaginatorModule],
+  imports: [MatTableModule, TitleCasePipe, CommonModule, MatSort, MatSortHeader, MatPaginator, MatPaginatorModule,
+    CdkDropList, CdkDrag, CdkDragHandle, FontAwesomeModule
+
+  ],
   templateUrl: './table.html',
   styleUrl: './table.css',
 })
@@ -24,6 +32,13 @@ export class Table implements OnInit, AfterViewInit, OnDestroy {
   data = input<any[]>([]);
   actions = input(false);
   actionTemplate = input<TemplateRef<any> | undefined>(undefined);
+
+  dragEnabled = input(false);
+  draggedRow = signal<any | null>(null);
+  targetRow = signal<any | null>(null);
+  rowDropped = output<CdkDragDrop<any[]>>();
+
+  gripIcon = faGripVertical;
 
   // --- MATERIAL VIEW CHILDREN ---
   @ViewChild(MatSort) sort!: MatSort;
@@ -99,6 +114,12 @@ export class Table implements OnInit, AfterViewInit, OnDestroy {
     // CLEANUP: If the component dies, destroy all global DOM listeners to prevent memory leaks
     this.removeDocumentListeners();
     this.handleListeners.forEach(unlisten => unlisten());
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    this.rowDropped.emit(event);
+    this.draggedRow.set(null);
+    this.targetRow.set(null);
   }
 
   // --- HELPER METHODS ---

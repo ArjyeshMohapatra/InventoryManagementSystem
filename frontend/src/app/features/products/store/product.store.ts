@@ -2,7 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductRepository } from 'src/app/core/api/repositories/product.repository';
 import { CacheStore } from 'src/app/shared/store/cache.store';
-import { retry, finalize } from 'rxjs';
+import { retry, finalize, forkJoin } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -39,7 +39,7 @@ export class ProductStore extends CacheStore {
             })
         ).subscribe({
             next: (products) => {
-                this.products.set(products);
+                this.products.set(products.sort((a,b) => a.order - b.order));
                 this.lastLoaded.set(Date.now());
             },
             error: () => {
@@ -72,7 +72,10 @@ export class ProductStore extends CacheStore {
 
     addProduct(product: Product, onSuccess?: () => void) {
         this.loading.set(true);
-        this.prodRepo.addProduct(product).pipe(
+        const products = this.products();
+        const latestOrder = products.length ? products[products.length - 1].order + 1 : 1;
+      
+        this.prodRepo.addProduct({ ...product, order: latestOrder }).pipe(
             finalize(() => {
               this.loading.set(false);
             })
@@ -82,10 +85,10 @@ export class ProductStore extends CacheStore {
                 onSuccess?.();
             },
             error: () => {
-                this.error.set('Failed to add product');
+              this.error.set('Failed to add product');
             }
-        });
-    }
+          });
+      }
 
     updateProduct(product: Product, onSuccess?: () => void) {
         this.loading.set(true);
@@ -95,7 +98,11 @@ export class ProductStore extends CacheStore {
             })
           ).subscribe({
             next: (updated) => {
-                this.products.update(products => products.map(existing => existing.id === updated.id ? updated : existing));
+                  this.products.update(
+                      products => products.map(existing =>
+                          existing.id === updated.id ? updated : existing
+                      ).sort((a,b) => a.order - b.order)
+                  );
                 onSuccess?.();
             },
             error: () => {

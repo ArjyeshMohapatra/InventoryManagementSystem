@@ -94,3 +94,53 @@ tr.mat-mdc-row:hover {
 th:hover .table-resize-handle {
   background: rgba(59, 130, 246, .18);
 }
+
+.drag-handle {
+  cursor: grab;
+  background: transparent;
+  border: none;
+  padding: 0 8px;
+  color: #64748b;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.cdk-drop-list-dragging {
+  user-select: none;
+}
+
+.drag-source td,
+.drag-target td {
+  background-color: rgba(59, 130, 246, 0.18) !important;
+  border-top: 2px dashed #2563eb !important;
+  border-bottom: 2px dashed #2563eb !important;
+  transition: background-color 0.15s ease;
+}
+
+.drag-source td:first-child,
+.drag-target td:first-child {
+  border-left: 2px dashed #2563eb !important;
+}
+
+.drag-source td:last-child,
+.drag-target td:last-child {
+  border-right: 2px dashed #2563eb !important;
+}
+
+/* Styling the ghostly gap left behind in the table */
+::ng-deep .cdk-drag-placeholder {
+  opacity: 1;
+  background: #6ced86;
+  border: 2px dashed #00ffb7;
+}
+
+/* Styling the row that follows your mouse */
+::ng-deep .cdk-drag-preview {
+  display: table;
+  /* Crucial for mat-table rows to keep their shape */
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}

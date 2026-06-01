@@ -5,4 +5,5 @@ export interface Product {
     price: number; 
     quantity: number;
     category: Category["id"];
+    order: number;
 }

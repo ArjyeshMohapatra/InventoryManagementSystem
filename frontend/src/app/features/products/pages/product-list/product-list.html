@@ -28,7 +28,12 @@
 }
 
 @else {
-    <app-table [columns]="columns" [data]="filteredProducts()" [actions]="actions" [actionTemplate]="actionTemplate">
+    <app-table [columns]="columns" 
+    [data]="filteredProducts()" 
+    [actions]="actions" 
+    [actionTemplate]="actionTemplate"
+    [dragEnabled]="true"
+    (rowDropped)="swapProducts($event)">
     
     <ng-template #actionTemplate let-row>
     
