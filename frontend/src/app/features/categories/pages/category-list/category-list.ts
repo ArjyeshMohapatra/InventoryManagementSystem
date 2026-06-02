@@ -27,7 +27,8 @@ export class CategoryList {
   searchTerm = signal('');
   columns = [
     'name',
-    'totalProductsQuantity'
+    'totalProductsQuantity',
+    'supplierCount'
   ];
   actions = true;
   selectedCategory = signal<Category | any>(null);
@@ -83,7 +84,11 @@ export class CategoryList {
     const term = this.searchTerm().toLowerCase().trim();
     return categories.filter((category) =>
       !term || category.name.toLowerCase().includes(term)
-    ).map(category => ({ ...category, totalProductsQuantity: this.categoryQuantityMap()[category.id] ?? 0}));
+    ).map(category => ({
+      ...category,
+      totalProductsQuantity: this.categoryQuantityMap()[category.id] ?? 0,
+      supplierCount: this.categorySupplierCountMap()[category.id] ?? 0
+    }));
   })
 
   async openDeleteModal(category: any) {

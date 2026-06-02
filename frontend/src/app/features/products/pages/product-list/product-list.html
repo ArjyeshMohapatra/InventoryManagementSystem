@@ -9,7 +9,14 @@
     <app-select-input 
     [value]="selectedCategory()" 
     [options]="categories()" 
-    (valueChanged)="selectedCategory.set($event)">
+    (valueChanged)="selectedCategory.set($event)"
+    defaultValue="All Categories">
+    </app-select-input>
+
+    <app-select-input [value]="selectedSupplier()" 
+    [options]="suppliers()" 
+    (valueChanged)="selectedSupplier.set($event)"
+    defaultValue="All Suppliers">
     </app-select-input>
 
     <button routerLink="/products/create" class="bg-green-600 text-white px-4 py-2 rounded">

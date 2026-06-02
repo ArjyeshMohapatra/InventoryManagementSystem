@@ -9,6 +9,7 @@ import { SelectOption } from '../../models/select.dropdown.model';
 })
 export class SelectInput {
   value = input('');
+  defaultValue = input('');
   options = input<SelectOption[]>([]);
   valueChanged = output<string>();
 

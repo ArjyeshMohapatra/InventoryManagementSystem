@@ -19,8 +19,8 @@ export class ProductList {
     'name',
     'price',
     'quantity',
-    'category',
-    'supplier'
+    'categoryName',
+    'supplierName'
   ];
 
   actions = true;
@@ -36,6 +36,7 @@ export class ProductList {
   searchTerm = signal(''); // debounced value
   searchInput = signal(''); // immediate typing
   selectedCategory = signal('');
+  selectedSupplier = signal('');
 
   selectedProduct = signal<Product | null>(null);
   showDeleteModal = signal(false);
@@ -71,16 +72,18 @@ export class ProductList {
     const products = this.prodStore.products();
     const term = this.searchTerm().toLowerCase().trim();
     const category = this.selectedCategory();
+    const supplier = this.selectedSupplier();
 
     return products.filter(product => {
       const matchesSearch = !term || product.name.toLowerCase().trim().includes(term);
       const matchesCategory = !category || product.category === category;
+      const matchesSupplier = !supplier || product.supplierId === supplier;
 
-      return (matchesSearch && matchesCategory);
+      return (matchesSearch && matchesCategory && matchesSupplier);
     }).map(product => ({
       ...product,
-      category: this.categoryMap()[product.category] ?? 'Unknown',
-      supplier: this.supplierMap()[product.supplierId] ?? 'Unknown'
+      categoryName: this.categoryMap()[product.category] ?? 'Unknown',
+      supplierName: this.supplierMap()[product.supplierId] ?? 'Unknown'
     }));
   });
 
@@ -89,7 +92,14 @@ export class ProductList {
     return categories.map(category => ({
       label: category.name,
       value: category.id
+    }));
+  });
 
+  suppliers = computed(() => {
+    const suppliers = this.suppStore.suppliers();
+    return suppliers.map(supplier => ({
+      label: supplier.name,
+      value: supplier.id
     }));
   });
 
