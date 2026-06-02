@@ -13,28 +13,28 @@
 </div>
 
 <app-table [columns]="columns" [data]="filteredSuppliers()" [actions]="actions" [actionTemplate]="actionTemplate">
+    <ng-template #actionTemplate let-row>
+    
+        <div class="flex gap-2">
+    
+            <button [routerLink]="['/suppliers/edit', row.id]" class="bg-yellow-500 text-white px-2 py-1 rounded">
+    
+                Edit
+    
+            </button>
+    
+            <button (click)="openDeleteModal(row)" class="bg-red-500 text-white px-2 py-1 rounded">
+    
+                Delete
+    
+            </button>
+    
+        </div>
+    
+        </ng-template>
 </app-table>
 
-<ng-template #actionTemplate let-row>
 
-    <div class="flex gap-2">
-
-        <button [routerLink]="['/suppliers/edit', row.id]" class="bg-yellow-500 text-white px-2 py-1 rounded">
-
-            Edit
-
-        </button>
-
-        <button (click)="openDeleteModal(row)" class="bg-red-500 text-white px-2 py-1 rounded">
-
-            Delete
-
-        </button>
-
-    </div>
-
-</ng-template>
-
-<app-modal [open]="showDeleteModal()" title="Delete Supplier" message="This action can't be undone."
+<app-modal [open]="showDeleteModal()" title="Delete Supplier" [message]="deleteMessage()"
     (confirmed)="deleteSupplier()" (cancelled)="closeDeleteModal()">
 </app-modal>

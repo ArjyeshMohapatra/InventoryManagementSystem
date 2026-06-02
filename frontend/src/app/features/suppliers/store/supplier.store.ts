@@ -4,12 +4,14 @@ import { finalize, retry } from 'rxjs';
 import { Supplier } from '../models/supplier.model';
 import { SupplierRepository } from '../../../core/api/repositories/supplier.repository';
 import { CacheStore } from '../../../shared/store/cache.store';
+import { ProductStore } from '../../products/store/product.store';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SupplierStore extends CacheStore {
   private suppRepo = inject(SupplierRepository);
+  private prodStore = inject(ProductStore);
 
   suppliers = signal<Supplier[]>([]);
   selectedSupplier = signal<Supplier | null>(null);
@@ -119,9 +121,7 @@ export class SupplierStore extends CacheStore {
         })
       ).subscribe({
         next: () => {
-          this.suppliers.update((suppliers) =>
-            suppliers.filter((supplier) => supplier.id !== id)
-          );
+          this.suppliers.update((suppliers) => suppliers.filter((supplier) => supplier.id !== id));
           onSuccess?.();
         },
         error: () => {
@@ -129,4 +129,22 @@ export class SupplierStore extends CacheStore {
         },
       });
   }
+
+  deleteSupplierWithProducts(supplierId: string, onSuccess?: () => void) {
+    this.loading.set(true);
+    this.suppRepo.deleteSupplierWithProducts(supplierId).pipe(
+        finalize(() => {
+          this.loading.set(false);
+        })
+      ).subscribe({
+        next: () => {
+            this.suppliers.update(suppliers => suppliers.filter(supplier => supplier.id !== supplierId));
+            this.prodStore.loadProducts();
+            onSuccess?.();
+        },
+        error: () => {
+            this.error.set('Failed to delete supplier');
+        }
+        });
+    }
 }

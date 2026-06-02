@@ -6,6 +6,8 @@ import { CategoryStore } from '../../store/category.store';
 import { Modal } from '../../../../shared/ui/modal/modal';
 import { ProductRepository } from '../../../../core/api/repositories/product.repository';
 import { lastValueFrom } from 'rxjs';
+import { Category } from '../../models/category.model';
+import { ProductStore } from 'src/app/features/products/store/product.store';
 
 @Component({
   selector: 'app-category-list',
@@ -15,14 +17,17 @@ import { lastValueFrom } from 'rxjs';
 })
 export class CategoryList {
   private categoryStore = inject(CategoryStore);
+  private productStore = inject(ProductStore);
   private productRepo = inject(ProductRepository);
 
   catStore = this.categoryStore;
+  prodStore = this.productStore;
+
   searchInput = signal('');
   searchTerm = signal('');
   columns = ['name'];
   actions = true;
-  selectedCategory = signal<any>(null);
+  selectedCategory = signal<Category | any>(null);
   showDeleteModal = signal(false);
   deleteMessage = signal('');
 
@@ -33,6 +38,7 @@ export class CategoryList {
       onCleanup(() => clearTimeout(timer));
     });
     this.catStore.loadCategories();
+    this.prodStore.loadProducts();
   }
 
   filteredCategories = computed(() => {
@@ -43,7 +49,7 @@ export class CategoryList {
 
   async openDeleteModal(category: any) {
     this.selectedCategory.set(category);
-    const products = await lastValueFrom(this.productRepo.getProductsByCategory(category.id));
+    const products = this.getCategoryProducts(category.id);
     const count = products.length;
     this.deleteMessage.set(
       count > 0 ? 
@@ -55,15 +61,30 @@ export class CategoryList {
   
   closeDeleteModal() {
     this.showDeleteModal.set(false);
+    this.selectedCategory.set(null);
   }
   
   deleteCategory() {
     const category = this.selectedCategory();
     if (!category) return;
   
-    this.catStore.deleteCategory(category.id, () => {
-        this.closeDeleteModal();
-      },
-    );
+    const linkedProducts = this.getCategoryProducts(category.id);
+
+    if (linkedProducts.length) {
+      this.catStore.deleteCategoryWithProducts(category.id, () => {
+            this.closeDeleteModal();
+          });
+    } else {
+      this.catStore.deleteCategory(category.id, () => {
+            this.closeDeleteModal();
+          });
+    }
+  }
+  
+  getCategoryProducts(categoryId: string) {
+    return this.prodStore.products().filter(
+        product =>
+          product.category === categoryId
+      );
   }
 }

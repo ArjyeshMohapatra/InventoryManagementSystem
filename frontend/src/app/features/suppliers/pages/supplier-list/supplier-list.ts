@@ -6,6 +6,7 @@ import { Table } from '../../../../shared/ui/table/table';
 import { Modal } from '../../../../shared/ui/modal/modal';
 
 import { SupplierStore } from '../../store/supplier.store';
+import { ProductStore } from 'src/app/features/products/store/product.store';
 import { Supplier } from '../../models/supplier.model';
 
 @Component({
@@ -16,8 +17,10 @@ import { Supplier } from '../../models/supplier.model';
 })
 export class SupplierList {
   private supplierStore = inject(SupplierStore);
+  private productStore = inject(ProductStore);
 
   suppStore = this.supplierStore;
+  prodStore = this.productStore;
 
   searchInput = signal('');
   searchTerm = signal('');
@@ -38,9 +41,11 @@ export class SupplierList {
 
   selectedSupplier = signal<Supplier | null>(null);
   showDeleteModal = signal(false);
+  deleteMessage = signal('');
 
   constructor() {
     this.suppStore.loadSuppliers();
+    this.prodStore.loadProducts();
 
     effect((onCleanup) => {
       const value = this.searchInput();
@@ -66,6 +71,13 @@ export class SupplierList {
 
   openDeleteModal(supplier: Supplier) {
     this.selectedSupplier.set(supplier);
+    const products = this.getSupplierProducts(supplier.id);
+    const count = products.length;
+    this.deleteMessage.set(
+      count > 0 ? 
+        `${supplier.name} Contains ${count} Linked Products. Deleting This SUpplier Will Also Remove Those Products.`
+        : `This action can't be undone, still want to delete Supplier ${supplier.name}?`
+    );
     this.showDeleteModal.set(true);
   }
 
@@ -79,8 +91,23 @@ export class SupplierList {
 
     if (!supplier) return;
 
-    this.suppStore.deleteSupplier(supplier.id, () => {
-      this.closeDeleteModal();
-    });
+    const linkedProducts = this.getSupplierProducts(supplier.id);
+
+    if (linkedProducts.length) {
+      this.suppStore.deleteSupplierWithProducts(supplier.id, () => {
+            this.closeDeleteModal();
+          });
+    } else {
+      this.suppStore.deleteSupplier(supplier.id, () => {
+            this.closeDeleteModal();
+          });
+    }
+  }
+
+  getSupplierProducts(supplierId: string) {
+    return this.prodStore.products().filter(
+        product =>
+          product.supplierId === supplierId
+      );
   }
 }

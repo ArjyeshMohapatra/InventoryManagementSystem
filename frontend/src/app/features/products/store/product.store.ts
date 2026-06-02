@@ -119,7 +119,8 @@ export class ProductStore extends CacheStore {
             })
           ).subscribe({
             next: () => {
-                this.products.update(products => products.filter(product => product.id !== id));
+                  this.products.update(products => products.filter(product => product.id !== id));
+                  this.loadProducts();
                 onSuccess?.();
             },
             error: () => {

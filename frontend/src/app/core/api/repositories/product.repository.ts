@@ -21,6 +21,10 @@ export class ProductRepository {
         return this.http.get<Product[]>(`${this.productsApi}?category=${categoryId}`);
     }
     
+    getProductsBySupplier(supplierId: string): Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.productsApi}?supplierId=${supplierId}`);
+    }
+    
     addProduct(product: Product): Observable<Product> {
         return this.http.post<Product>(this.productsApi, product);
     }
