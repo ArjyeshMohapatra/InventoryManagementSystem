@@ -22,7 +22,17 @@ export class SupplierList {
   searchInput = signal('');
   searchTerm = signal('');
 
-  columns = ['name', 'email', 'phone', 'address'];
+  columns = [
+    'id',
+    'name',
+    'company',
+    'contactPerson',
+    'contactPersonGender',
+    'email',
+    'phone',
+    'website',
+    'gstNumber'
+  ];
 
   actions = true;
 

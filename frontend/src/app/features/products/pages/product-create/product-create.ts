@@ -29,7 +29,7 @@ export class ProductCreate {
     price: [0],
     quantity: [0],
     category: [''],
-    supplier: ['']
+    supplierId: ['']
 
   });
 

@@ -6,7 +6,8 @@
       "quantity": 15,
       "id": "aBcD1eF2gHi",
       "category": "A7kP2mQ9xL1",
-      "order": 4
+      "order": 4,
+      "supplierId": "SUP001"
     },
     {
       "name": "FHD Monitor 24-inch",
@@ -14,7 +15,8 @@
       "quantity": 8,
       "id": "jKlM3nO4pQr",
       "category": "A7kP2mQ9xL1",
-      "order": 2
+      "order": 2,
+      "supplierId": "SUP001"
     },
     {
       "name": "HD Webcam 1080p",
@@ -22,7 +24,8 @@
       "quantity": 20,
       "id": "sTuV5wX6yZa",
       "category": "A7kP2mQ9xL1",
-      "order": 1
+      "order": 1,
+      "supplierId": "SUP001"
     },
     {
       "name": "USB-C Hub Multiport",
@@ -30,7 +33,8 @@
       "quantity": 40,
       "id": "bCdE7fG8hIj",
       "category": "A7kP2mQ9xL1",
-      "order": 3
+      "order": 3,
+      "supplierId": "SUP001"
     },
     {
       "name": "Wireless Charger Pad",
@@ -38,7 +42,8 @@
       "quantity": 30,
       "id": "kLmN9oP0qRs",
       "category": "A7kP2mQ9xL1",
-      "order": 5
+      "order": 5,
+      "supplierId": "SUP001"
     },
     {
       "name": "Bluetooth Speaker Portable",
@@ -46,7 +51,8 @@
       "quantity": 18,
       "id": "tUvW1xY2zAb",
       "category": "A7kP2mQ9xL1",
-      "order": 6
+      "order": 6,
+      "supplierId": "SUP001"
     },
     {
       "name": "External SSD 1TB",
@@ -54,7 +60,8 @@
       "quantity": 12,
       "id": "cDeF3gH4iJk",
       "category": "A7kP2mQ9xL1",
-      "order": 7
+      "order": 7,
+      "supplierId": "SUP001"
     },
     {
       "name": "Graphic Drawing Tablet",
@@ -62,7 +69,8 @@
       "quantity": 10,
       "id": "lMnOP5qR6sT",
       "category": "A7kP2mQ9xL1",
-      "order": 8
+      "order": 8,
+      "supplierId": "SUP001"
     },
     {
       "name": "Laptop Cooling Pad",
@@ -70,7 +78,8 @@
       "quantity": 22,
       "id": "uVwX7yZ8aBc",
       "category": "A7kP2mQ9xL1",
-      "order": 9
+      "order": 9,
+      "supplierId": "SUP001"
     },
     {
       "name": "HDMI Cable 4K 3-Meter",
@@ -78,7 +87,8 @@
       "quantity": 100,
       "id": "dEfG9hI0jKl",
       "category": "A7kP2mQ9xL1",
-      "order": 10
+      "order": 10,
+      "supplierId": "SUP001"
     },
     {
       "name": "Power Bank 20000mAh",
@@ -86,7 +96,8 @@
       "quantity": 35,
       "id": "mNoP1qR2sTu",
       "category": "A7kP2mQ9xL1",
-      "order": 11
+      "order": 11,
+      "supplierId": "SUP001"
     },
     {
       "name": "Smart Fitness Band",
@@ -94,7 +105,8 @@
       "quantity": 25,
       "id": "vWxY3zA4bCd",
       "category": "A7kP2mQ9xL1",
-      "order": 12
+      "order": 12,
+      "supplierId": "SUP001"
     },
     {
       "name": "Noise Cancelling Earplugs",
@@ -102,7 +114,8 @@
       "quantity": 50,
       "id": "eFgH5iJ6kLm",
       "category": "A7kP2mQ9xL1",
-      "order": 13
+      "order": 13,
+      "supplierId": "SUP001"
     },
     {
       "name": "Ergonomic Office Chair",
@@ -110,7 +123,8 @@
       "quantity": 6,
       "id": "nOpQ7rS8tUv",
       "category": "B4nT8vR3cY6",
-      "order": 14
+      "order": 14,
+      "supplierId": "SUP004"
     },
     {
       "name": "LED Desk Lamp with USB",
@@ -118,7 +132,8 @@
       "quantity": 14,
       "id": "wXyZ9aB0cDe",
       "category": "B4nT8vR3cY6",
-      "order": 15
+      "order": 15,
+      "supplierId": "SUP004"
     },
     {
       "name": "Dual Monitor Arm Mount",
@@ -126,7 +141,8 @@
       "quantity": 11,
       "id": "fGhI1jK2lMn",
       "category": "B4nT8vR3cY6",
-      "order": 16
+      "order": 16,
+      "supplierId": "SUP004"
     },
     {
       "name": "Memory Foam Seat Cushion",
@@ -134,7 +150,8 @@
       "quantity": 28,
       "id": "oPqR3sT4uVw",
       "category": "B4nT8vR3cY6",
-      "order": 17
+      "order": 17,
+      "supplierId": "SUP004"
     },
     {
       "name": "Whiteboard 3x2 Feet",
@@ -142,7 +159,8 @@
       "quantity": 15,
       "id": "xYzA5bC6dEf",
       "category": "B4nT8vR3cY6",
-      "order": 18
+      "order": 18,
+      "supplierId": "SUP004"
     },
     {
       "name": "Paper Shredder Cross-Cut",
@@ -150,7 +168,8 @@
       "quantity": 7,
       "id": "gHiJ7kL8mNo",
       "category": "B4nT8vR3cY6",
-      "order": 19
+      "order": 19,
+      "supplierId": "SUP004"
     },
     {
       "name": "Gel Pens Assorted 12-Pack",
@@ -158,7 +177,8 @@
       "quantity": 85,
       "id": "pQrS9tU0vWx",
       "category": "B4nT8vR3cY6",
-      "order": 20
+      "order": 20,
+      "supplierId": "SUP004"
     },
     {
       "name": "Heavy Duty Stapler",
@@ -166,7 +186,8 @@
       "quantity": 40,
       "id": "yZaB1cD2eFg",
       "category": "B4nT8vR3cY6",
-      "order": 21
+      "order": 21,
+      "supplierId": "SUP004"
     },
     {
       "name": "Desk Organizer Mesh Caddy",
@@ -174,7 +195,8 @@
       "quantity": 60,
       "id": "hIjK3lM4nOp",
       "category": "B4nT8vR3cY6",
-      "order": 22
+      "order": 22,
+      "supplierId": "SUP004"
     },
     {
       "name": "Notebook Journal A5 Hardcover",
@@ -182,7 +204,8 @@
       "quantity": 120,
       "id": "qRsT5uV6wXy",
       "category": "B4nT8vR3cY6",
-      "order": 23
+      "order": 23,
+      "supplierId": "SUP004"
     },
     {
       "name": "Wireless Presenter Clicker",
@@ -190,7 +213,8 @@
       "quantity": 24,
       "id": "zA_B7cD8eFg",
       "category": "B4nT8vR3cY6",
-      "order": 24
+      "order": 24,
+      "supplierId": "SUP004"
     },
     {
       "name": "Electric Pencil Sharpener",
@@ -198,7 +222,8 @@
       "quantity": 19,
       "id": "iJkL9mN0oPq",
       "category": "B4nT8vR3cY6",
-      "order": 25
+      "order": 25,
+      "supplierId": "SUP004"
     },
     {
       "name": "Stainless Steel Water Bottle",
@@ -206,7 +231,8 @@
       "quantity": 50,
       "id": "vWxY5zA6bCd",
       "category": "D1xM7qZ4uN3",
-      "order": 26
+      "order": 26,
+      "supplierId": "SUP002"
     },
     {
       "name": "French Press Coffee Maker",
@@ -214,7 +240,8 @@
       "quantity": 16,
       "id": "eFgH7iJ8kLm",
       "category": "D1xM7qZ4uN3",
-      "order": 27
+      "order": 27,
+      "supplierId": "SUP002"
     },
     {
       "name": "Digital Kitchen Scale",
@@ -222,7 +249,8 @@
       "quantity": 38,
       "id": "nOpQ9rS0tUv",
       "category": "D1xM7qZ4uN3",
-      "order": 28
+      "order": 28,
+      "supplierId": "SUP002"
     },
     {
       "name": "Non-Stick Frying Pan 10-inch",
@@ -230,7 +258,8 @@
       "quantity": 14,
       "id": "wXyZ1aB2cDe",
       "category": "D1xM7qZ4uN3",
-      "order": 29
+      "order": 29,
+      "supplierId": "SUP002"
     },
     {
       "name": "Chef Knife Stainless Steel",
@@ -238,7 +267,8 @@
       "quantity": 12,
       "id": "fGhI3jK4lMn",
       "category": "D1xM7qZ4uN3",
-      "order": 30
+      "order": 30,
+      "supplierId": "SUP002"
     },
     {
       "name": "Electric Kettle 1.5L",
@@ -246,7 +276,8 @@
       "quantity": 25,
       "id": "oPqR5sT6uVw",
       "category": "D1xM7qZ4uN3",
-      "order": 31
+      "order": 31,
+      "supplierId": "SUP002"
     },
     {
       "name": "Silicone Cooking Utensils Set",
@@ -254,7 +285,8 @@
       "quantity": 30,
       "id": "xYzA7bC8dEf",
       "category": "D1xM7qZ4uN3",
-      "order": 32
+      "order": 32,
+      "supplierId": "SUP002"
     },
     {
       "name": "Food Storage Containers 10Pc",
@@ -262,7 +294,8 @@
       "quantity": 45,
       "id": "gHiJ9kL0mNo",
       "category": "D1xM7qZ4uN3",
-      "order": 33
+      "order": 33,
+      "supplierId": "SUP002"
     },
     {
       "name": "Memory Foam Bath Mat",
@@ -270,7 +303,8 @@
       "quantity": 40,
       "id": "pQrS1tU2vWx",
       "category": "D1xM7qZ4uN3",
-      "order": 34
+      "order": 34,
+      "supplierId": "SUP002"
     },
     {
       "name": "Scented Soy Wax Candle",
@@ -278,7 +312,8 @@
       "quantity": 70,
       "id": "yZaB3cD4eFg",
       "category": "D1xM7qZ4uN3",
-      "order": 35
+      "order": 35,
+      "supplierId": "SUP002"
     },
     {
       "name": "Ceramic Coffee Mug 15oz",
@@ -286,7 +321,8 @@
       "quantity": 80,
       "id": "hIjK5lM6nOp",
       "category": "D1xM7qZ4uN3",
-      "order": 36
+      "order": 36,
+      "supplierId": "SUP002"
     },
     {
       "name": "Automatic Soap Dispenser",
@@ -294,7 +330,8 @@
       "quantity": 20,
       "id": "qRsT7uV8wXy",
       "category": "D1xM7qZ4uN3",
-      "order": 37
+      "order": 37,
+      "supplierId": "SUP002"
     },
     {
       "name": "Yoga Mat Eco-Friendly 6mm",
@@ -302,7 +339,8 @@
       "quantity": 35,
       "id": "zA_B9cD0eFg",
       "category": "E6rL2bV8tF5",
-      "order": 38
+      "order": 38,
+      "supplierId": "SUP003"
     },
     {
       "name": "Adjustable Dumbbells Pair",
@@ -310,7 +348,8 @@
       "quantity": 6,
       "id": "iJkL1mN2oPq",
       "category": "E6rL2bV8tF5",
-      "order": 39
+      "order": 39,
+      "supplierId": "SUP003"
     },
     {
       "name": "Resistance Bands Set of 5",
@@ -318,7 +357,8 @@
       "quantity": 60,
       "id": "rStU3vW4xYz",
       "category": "E6rL2bV8tF5",
-      "order": 40
+      "order": 40,
+      "supplierId": "SUP003"
     },
     {
       "name": "Foam Roller Muscle Massager",
@@ -326,7 +366,8 @@
       "quantity": 25,
       "id": "aBcD5eF6gHi",
       "category": "E6rL2bV8tF5",
-      "order": 41
+      "order": 41,
+      "supplierId": "SUP003"
     },
     {
       "name": "Running Waist Pack Belt",
@@ -334,7 +375,8 @@
       "quantity": 48,
       "id": "jKlM7nO8pQr",
       "category": "E6rL2bV8tF5",
-      "order": 42
+      "order": 42,
+      "supplierId": "SUP003"
     },
     {
       "name": "Sports Gym Bag with Shoe Slot",
@@ -342,7 +384,8 @@
       "quantity": 18,
       "id": "sTuV9wX0yZa",
       "category": "E6rL2bV8tF5",
-      "order": 43
+      "order": 43,
+      "supplierId": "SUP003"
     },
     {
       "name": "Microfiber Quick Dry Towel",
@@ -350,7 +393,8 @@
       "quantity": 75,
       "id": "bCdE1fG2hIj",
       "category": "E6rL2bV8tF5",
-      "order": 44
+      "order": 44,
+      "supplierId": "SUP003"
     },
     {
       "name": "Skipping Rope Speed Cable",
@@ -358,7 +402,8 @@
       "quantity": 110,
       "id": "kLmN3oP4qRs",
       "category": "E6rL2bV8tF5",
-      "order": 45
+      "order": 45,
+      "supplierId": "SUP003"
     },
     {
       "name": "Ab Roller Wheel Workout",
@@ -366,7 +411,8 @@
       "quantity": 30,
       "id": "tUvW5xY6zAb",
       "category": "E6rL2bV8tF5",
-      "order": 46
+      "order": 46,
+      "supplierId": "SUP003"
     },
     {
       "name": "Push Up Bars Stand Ergonomic",
@@ -374,7 +420,8 @@
       "quantity": 32,
       "id": "cDeF7gH8iJk",
       "category": "E6rL2bV8tF5",
-      "order": 47
+      "order": 47,
+      "supplierId": "SUP003"
     },
     {
       "name": "Cycling Gloves Gel Padded",
@@ -382,7 +429,8 @@
       "quantity": 42,
       "id": "lMnOP9qR0sT",
       "category": "E6rL2bV8tF5",
-      "order": 48
+      "order": 48,
+      "supplierId": "SUP003"
     },
     {
       "name": "Ankle Weights 2pc Set",
@@ -390,7 +438,8 @@
       "quantity": 20,
       "id": "uVwX1yZ2aBc",
       "category": "E6rL2bV8tF5",
-      "order": 49
+      "order": 49,
+      "supplierId": "SUP003"
     },
     {
       "name": "Sonic Electric Toothbrush",
@@ -398,7 +447,8 @@
       "quantity": 22,
       "id": "dEfG3hI4jKl",
       "category": "F3yC9nW1sG7",
-      "order": 50
+      "order": 50,
+      "supplierId": "SUP005"
     },
     {
       "name": "Beard Trimmer Cordless",
@@ -406,7 +456,8 @@
       "quantity": 25,
       "id": "mNoP5qR6sTu",
       "category": "F3yC9nW1sG7",
-      "order": 51
+      "order": 51,
+      "supplierId": "SUP005"
     },
     {
       "name": "Hair Dryer 2000W Ionic",
@@ -414,7 +465,8 @@
       "quantity": 15,
       "id": "vWxY7zA8bCd",
       "category": "F3yC9nW1sG7",
-      "order": 52
+      "order": 52,
+      "supplierId": "SUP005"
     },
     {
       "name": "Ceramic Hair Straightener",
@@ -422,7 +474,8 @@
       "quantity": 14,
       "id": "eFgH9iJ0kLm",
       "category": "F3yC9nW1sG7",
-      "order": 53
+      "order": 53,
+      "supplierId": "SUP005"
     },
     {
       "name": "Digital Bathroom Scale",
@@ -430,7 +483,8 @@
       "quantity": 30,
       "id": "nOpQ1rS2tUv",
       "category": "F3yC9nW1sG7",
-      "order": 54
+      "order": 54,
+      "supplierId": "SUP005"
     },
     {
       "name": "Essential Oil Diffuser 500ml",
@@ -438,7 +492,8 @@
       "quantity": 28,
       "id": "wXyZ3aB4cDe",
       "category": "F3yC9nW1sG7",
-      "order": 55
+      "order": 55,
+      "supplierId": "SUP005"
     },
     {
       "name": "Manicure Set 12-in-1 Case",
@@ -446,7 +501,8 @@
       "quantity": 55,
       "id": "fGhI5jK6lMn",
       "category": "F3yC9nW1sG7",
-      "order": 56
+      "order": 56,
+      "supplierId": "SUP005"
     },
     {
       "name": "Jade Roller Face Massager",
@@ -454,7 +510,8 @@
       "quantity": 60,
       "id": "oPqR7sT8uVw",
       "category": "F3yC9nW1sG7",
-      "order": 57
+      "order": 57,
+      "supplierId": "SUP005"
     },
     {
       "name": "Electric Callus Remover",
@@ -462,7 +519,8 @@
       "quantity": 18,
       "id": "xYzA9bC0dEf",
       "category": "F3yC9nW1sG7",
-      "order": 58
+      "order": 58,
+      "supplierId": "SUP005"
     },
     {
       "name": "Sleep Eye Mask Silk Blindfold",
@@ -470,7 +528,8 @@
       "quantity": 95,
       "id": "gHiJ1kL2mNo",
       "category": "F3yC9nW1sG7",
-      "order": 59
+      "order": 59,
+      "supplierId": "SUP005"
     },
     {
       "name": "Water Flosser Cordless Oral",
@@ -478,7 +537,8 @@
       "quantity": 16,
       "id": "pQrS3tU4vWx",
       "category": "F3yC9nW1sG7",
-      "order": 60
+      "order": 60,
+      "supplierId": "SUP005"
     },
     {
       "name": "Makeup Brushes Set 14pc",
@@ -486,7 +546,8 @@
       "quantity": 40,
       "id": "yZaB5cD6eFg",
       "category": "F3yC9nW1sG7",
-      "order": 61
+      "order": 61,
+      "supplierId": "SUP005"
     },
     {
       "name": "Wireless Gaming Mouse RGB",
@@ -494,7 +555,8 @@
       "quantity": 19,
       "id": "hIjK7lM8nOp",
       "category": "A7kP2mQ9xL1",
-      "order": 62
+      "order": 62,
+      "supplierId": "SUP001"
     },
     {
       "name": "RGB Mouse Pad Extra Large",
@@ -502,7 +564,8 @@
       "quantity": 33,
       "id": "qRsT9uV0wXy",
       "category": "A7kP2mQ9xL1",
-      "order": 63
+      "order": 63,
+      "supplierId": "SUP001"
     },
     {
       "name": "Condenser Microphone USB",
@@ -510,7 +573,8 @@
       "quantity": 14,
       "id": "zA_B1cD2eFg",
       "category": "A7kP2mQ9xL1",
-      "order": 64
+      "order": 64,
+      "supplierId": "SUP001"
     },
     {
       "name": "Studio Monitor Headphones",
@@ -518,7 +582,8 @@
       "quantity": 11,
       "id": "iJkL3mN4oPq",
       "category": "A7kP2mQ9xL1",
-      "order": 65
+      "order": 65,
+      "supplierId": "SUP001"
     },
     {
       "name": "Fountain Pen Matte Black",
@@ -526,7 +591,8 @@
       "quantity": 25,
       "id": "rStU5vW6xYz",
       "category": "B4nT8vR3cY6",
-      "order": 66
+      "order": 66,
+      "supplierId": "SUP004"
     },
     {
       "name": "Leather Desk Pad Blotter",
@@ -534,7 +600,8 @@
       "quantity": 30,
       "id": "aBcD7eF8gHi",
       "category": "B4nT8vR3cY6",
-      "order": 67
+      "order": 67,
+      "supplierId": "SUP004"
     },
     {
       "name": "Expanding File Folder 24 Pockets",
@@ -542,7 +609,8 @@
       "quantity": 42,
       "id": "jKlM9nO0pQr",
       "category": "B4nT8vR3cY6",
-      "order": 68
+      "order": 68,
+      "supplierId": "SUP004"
     },
     {
       "name": "Heavy Duty Shipping Tape 6-Rolls",
@@ -550,7 +618,8 @@
       "quantity": 50,
       "id": "sTuV1wX2yZa",
       "category": "B4nT8vR3cY6",
-      "order": 69
+      "order": 69,
+      "supplierId": "SUP004"
     },
     {
       "name": "Cold Brew Iced Coffee Maker",
@@ -558,7 +627,8 @@
       "quantity": 17,
       "id": "lMnOP1qR2sT",
       "category": "D1xM7qZ4uN3",
-      "order": 70
+      "order": 70,
+      "supplierId": "SUP002"
     },
     {
       "name": "Stainless Steel Measuring Cups",
@@ -566,7 +636,8 @@
       "quantity": 40,
       "id": "uVwX3yZ4aBc",
       "category": "D1xM7qZ4uN3",
-      "order": 71
+      "order": 71,
+      "supplierId": "SUP002"
     },
     {
       "name": "Magnetic Knife Strip 16-inch",
@@ -574,7 +645,8 @@
       "quantity": 28,
       "id": "dEfG5hI6jKl",
       "category": "D1xM7qZ4uN3",
-      "order": 72
+      "order": 72,
+      "supplierId": "SUP002"
     },
     {
       "name": "Silicone Baking Mats Pair",
@@ -582,7 +654,8 @@
       "quantity": 50,
       "id": "mNoP7qR8sTu",
       "category": "D1xM7qZ4uN3",
-      "order": 73
+      "order": 73,
+      "supplierId": "SUP002"
     },
     {
       "name": "Swimming Goggles Anti-Fog",
@@ -590,7 +663,8 @@
       "quantity": 45,
       "id": "vWxY9zA0bCd",
       "category": "E6rL2bV8tF5",
-      "order": 74
+      "order": 74,
+      "supplierId": "SUP003"
     },
     {
       "name": "Waterproof Dry Bag 20L",
@@ -598,7 +672,8 @@
       "quantity": 22,
       "id": "eFgH1iJ2kLm",
       "category": "E6rL2bV8tF5",
-      "order": 75
+      "order": 75,
+      "supplierId": "SUP003"
     },
     {
       "name": "Hand Gripper Strength Trainer",
@@ -606,7 +681,8 @@
       "quantity": 90,
       "id": "nOpQ3rS4tUv",
       "category": "E6rL2bV8tF5",
-      "order": 76
+      "order": 76,
+      "supplierId": "SUP003"
     },
     {
       "name": "Pilates Ring Toning Circle",
@@ -614,7 +690,8 @@
       "quantity": 25,
       "id": "wXyZ5aB6cDe",
       "category": "E6rL2bV8tF5",
-      "order": 77
+      "order": 77,
+      "supplierId": "SUP003"
     },
     {
       "name": "Beard Oil and Balm Kit",
@@ -622,7 +699,8 @@
       "quantity": 36,
       "id": "fGhI7jK8lMn",
       "category": "F3yC9nW1sG7",
-      "order": 78
+      "order": 78,
+      "supplierId": "SUP005"
     },
     {
       "name": "Microcurrent Facial Roller",
@@ -630,7 +708,8 @@
       "quantity": 15,
       "id": "oPqR9sT0uVw",
       "category": "F3yC9nW1sG7",
-      "order": 79
+      "order": 79,
+      "supplierId": "SUP005"
     },
     {
       "name": "Electric Heating Pad for Back",
@@ -638,7 +717,8 @@
       "quantity": 23,
       "id": "xYzA1bC2dEf",
       "category": "F3yC9nW1sG7",
-      "order": 80
+      "order": 80,
+      "supplierId": "SUP005"
     },
     {
       "name": "Satin Pillowcase Pair for Hair",
@@ -646,7 +726,8 @@
       "quantity": 65,
       "id": "gHiJ3kL4mNo",
       "category": "F3yC9nW1sG7",
-      "order": 81
+      "order": 81,
+      "supplierId": "SUP005"
     },
     {
       "name": "Hair Dryer",
@@ -654,7 +735,8 @@
       "quantity": 10,
       "id": "sbqXa8dKlSY",
       "category": "A7kP2mQ9xL1",
-      "order": 82
+      "order": 82,
+      "supplierId": "SUP001"
     }
   ],
   "categories": [
@@ -683,5 +765,67 @@
       "id": "IsMzgEoeoGc"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "$schema": "./node_modules/json-server/schema.json",
+  "suppliers": [
+    {
+      "id": "SUP001",
+      "name": "Dell India supplierId",
+      "company": "Dell Technologies",
+      "contactPerson": "Rahul Sharma",
+      "contactPersonGender": "Male",
+      "email": "sales@dell.in",
+      "phone": "9876543210",
+      "website": "https://www.dell.com",
+      "gstNumber": "29ABCDE1234F1Z5",
+      "address": "Bangalore, Karnataka"
+    },
+    {
+      "id": "SUP002",
+      "name": "HP Distribution Hub",
+      "company": "HP India",
+      "contactPerson": "Priya Kapoor",
+      "contactPersonGender": "Female",
+      "email": "support@hpindia.com",
+      "phone": "9123456780",
+      "website": "https://www.hp.com",
+      "gstNumber": "27FGHIJ5678K2Z1",
+      "address": "Mumbai, Maharashtra"
+    },
+    {
+      "id": "SUP003",
+      "name": "Samsung Vendor Network",
+      "company": "Samsung Electronics",
+      "contactPerson": "Amit Verma",
+      "contactPersonGender": "Male",
+      "email": "vendor@samsung.in",
+      "phone": "9988776655",
+      "website": "https://www.samsung.com",
+      "gstNumber": "19LMNOP4321Q3Z7",
+      "address": "Noida, Uttar Pradesh"
+    },
+    {
+      "id": "SUP004",
+      "name": "Urban Office Traders",
+      "company": "Urban Office Supplies",
+      "contactPerson": "Sneha Das",
+      "contactPersonGender": "Female",
+      "email": "orders@urbanoffice.com",
+      "phone": "9012345678",
+      "website": "https://www.urbanoffice.com",
+      "gstNumber": "07QRSTU8765V4Z9",
+      "address": "Kolkata, West Bengal"
+    },
+    {
+      "id": "SUP005",
+      "name": "Wellness Essentials Supply",
+      "company": "Wellness Essentials",
+      "contactPerson": "Alex Morgan",
+      "contactPersonGender": "Other",
+      "email": "hello@wellnessessentials.com",
+      "phone": "9090909090",
+      "website": "https://www.wellnessessentials.com",
+      "gstNumber": "33WXYZ1234A5Z2",
+      "address": "Chennai, Tamil Nadu"
+    }
+  ]
 }

@@ -21,7 +21,10 @@ style="table-layout: fixed; width: 100%;"
         [style.width.px]="columnWidths[column]"
         [style.min-width.px]="columnWidths[column]"
         [style.max-width.px]="columnWidths[column]"
-        > {{ column | titlecase }} 
+        > {{ column
+        .replace(/([A-Z])/g, ' $1')
+        .trim()
+        | titlecase }} 
         </th>
         <td 
         mat-cell 
