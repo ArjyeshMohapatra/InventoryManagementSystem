@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { SearchInput, SelectInput, Table, Modal } from '../../../../shared/ui';
 import { Product } from '../../models/product.model';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { SupplierStore } from 'src/app/features/suppliers/store/supplier.store';
 
 @Component({
   selector: 'app-product-list',
@@ -18,16 +19,19 @@ export class ProductList {
     'name',
     'price',
     'quantity',
-    'category'
+    'category',
+    'supplier'
   ];
 
   actions = true;
 
   private productStore = inject(ProductStore);
   private categoryStore = inject(CategoryStore);
+  private supplierStore = inject(SupplierStore);
 
   prodStore = this.productStore;
   catStore = this.categoryStore;
+  suppStore = this.supplierStore;
 
   searchTerm = signal(''); // debounced value
   searchInput = signal(''); // immediate typing
@@ -43,14 +47,23 @@ export class ProductList {
       onCleanup(() => { clearTimeout(timer) });
     });
     this.prodStore.loadProducts();
-    this.catStore.loadCategories(); // Added this
+    this.catStore.loadCategories();
+    this.suppStore.loadSuppliers();
   }
 
   categoryMap = computed(() => {
-    const categories = this.catStore.categories();
+    const categories = this.catStore.categories() ?? [];
     return Object.fromEntries(categories.map(category => [
       category.id,
       category.name
+    ]));
+  });
+
+  supplierMap = computed(() => {
+    const suppliers = this.suppStore.suppliers() ?? [];
+    return Object.fromEntries(suppliers.map(supplier => [
+      supplier.id,
+      supplier.name
     ]));
   });
 
@@ -64,7 +77,11 @@ export class ProductList {
       const matchesCategory = !category || product.category === category;
 
       return (matchesSearch && matchesCategory);
-    }).map(product => ({ ...product, category: this.categoryMap()[product.category] ?? 'Unknown' }));
+    }).map(product => ({
+      ...product,
+      category: this.categoryMap()[product.category] ?? 'Unknown',
+      supplier: this.supplierMap()[product.supplierId] ?? 'Unknown'
+    }));
   });
 
   categories = computed(() => {

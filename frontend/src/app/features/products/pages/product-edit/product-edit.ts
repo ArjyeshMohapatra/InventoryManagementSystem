@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductForm } from '../../components/product-form/product-form';
 import { ProductStore } from '../../store/product.store';
 import { Product } from '../../models/product.model';
+import { Supplier } from 'src/app/features/suppliers/models/supplier.model';
+import { SupplierStore } from 'src/app/features/suppliers/store/supplier.store';
 
 @Component({
   selector: 'app-product-edit',
@@ -19,23 +21,26 @@ export class ProductEdit{
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private productStore = inject(ProductStore);
+  private supplierStore = inject(SupplierStore);
+
+  suppStore = this.supplierStore;
   prodStore = this.productStore
 
   id = String(this.route.snapshot.paramMap.get('id'));
-
-  
 
   form = this.fb.group({
 
     name: [''],
     price: [0],
     quantity: [0],
-    category: ['']
+    category: [''],
+    supplier: ['']
 
   });
   
   constructor() {
     this.prodStore.loadProductById(this.id);
+    this.suppStore.loadSuppliers();
     effect(() => {
       const productData = this.prodStore.selectedProduct();
       if (productData) {

@@ -1,0 +1,58 @@
+<form [formGroup]="form()" (ngSubmit)="onSubmit()" class="space-y-4 rounded bg-white p-6 shadow">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div>
+            <label class="mb-1 block font-medium">Supplier Name</label>
+            <input type="text" formControlName="name" class="w-full rounded border p-2" [readonly]="loading()" />
+        </div>
+
+        <div>
+            <label class="mb-1 block font-medium">Company</label>
+            <input type="text" formControlName="company" class="w-full rounded border p-2" [readonly]="loading()" />
+        </div>
+
+        <div>
+            <label class="mb-1 block font-medium">Contact Person</label>
+            <input type="text" formControlName="contactPerson" class="w-full rounded border p-2"
+                [readonly]="loading()" />
+        </div>
+
+        <div>
+            <label class="mb-1 block font-medium">Contact Person's Gender</label>
+            <select formControlName="contactPersonGender" class="w-full rounded border p-2" [disabled]="loading()">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="mb-1 block font-medium">Email</label>
+            <input type="email" formControlName="email" class="w-full rounded border p-2" [readonly]="loading()" />
+        </div>
+
+        <div>
+            <label class="mb-1 block font-medium">Phone</label>
+            <input type="text" formControlName="phone" class="w-full rounded border p-2" [readonly]="loading()" />
+        </div>
+
+        <div>
+            <label class="mb-1 block font-medium">Website</label>
+            <input type="text" formControlName="website" class="w-full rounded border p-2" [readonly]="loading()" />
+        </div>
+
+        <div>
+            <label class="mb-1 block font-medium">GST Number</label>
+            <input type="text" formControlName="gstNumber" class="w-full rounded border p-2" [readonly]="loading()" />
+        </div>
+
+        <div class="md:col-span-3">
+            <label class="mb-1 block font-medium">Address</label>
+            <textarea formControlName="address" class="w-full rounded border p-2" [readonly]="loading()"></textarea>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="loading()" class="rounded bg-blue-500 px-4 py-2 text-white disabled:bg-gray-400">
+        {{ loading() ? 'Saving...' : buttonText() }}
+    </button>
+</form>

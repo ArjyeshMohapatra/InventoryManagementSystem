@@ -1,13 +1,6 @@
 import {
-  Component, input, TemplateRef, ViewChild, AfterViewInit, effect, OnInit,
-  OnDestroy,
-  Renderer2,
-  ElementRef,
-  ChangeDetectorRef,
-  inject,
-  signal,
-  output
- } from '@angular/core';
+  Component, input, TemplateRef, viewChild, AfterViewInit, effect, OnInit, OnDestroy, Renderer2, ElementRef,
+  ChangeDetectorRef, inject, signal, output } from '@angular/core';
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -19,9 +12,8 @@ import { faGripVertical } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, TitleCasePipe, CommonModule, MatSort, MatSortHeader, MatPaginator, MatPaginatorModule,
-    CdkDropList, CdkDrag, CdkDragHandle, FontAwesomeModule
-
+  imports: [MatTableModule, TitleCasePipe, CommonModule, MatSort, MatSortHeader, MatPaginator,
+    MatPaginatorModule, CdkDropList, CdkDrag, CdkDragHandle, FontAwesomeModule
   ],
   templateUrl: './table.html',
   styleUrl: './table.css',
@@ -41,8 +33,8 @@ export class Table implements OnInit, AfterViewInit, OnDestroy {
   gripIcon = faGripVertical;
 
   // --- MATERIAL VIEW CHILDREN ---
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  sort = viewChild.required(MatSort);
+  paginator = viewChild.required(MatPaginator);
 
   // --- COMPONENT STATE ---
   dataSource = new MatTableDataSource<any>();
@@ -71,8 +63,8 @@ export class Table implements OnInit, AfterViewInit, OnDestroy {
       this.dataSource.data = currentData;
       
       // Crucial: Re-attach Sort and Paginator because setting new data can detach them
-      if (this.sort) this.dataSource.sort = this.sort;
-      if (this.paginator) this.dataSource.paginator = this.paginator;
+      if (this.sort) this.dataSource.sort = this.sort();
+      if (this.paginator) this.dataSource.paginator = this.paginator();
       
       // If we actually have data, wait a tick for the DOM to render the new rows/headers,
       // then inject the resize handles.
@@ -92,13 +84,11 @@ export class Table implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     // Initial wiring up of Material components
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort();
+    this.dataSource.paginator = this.paginator();
 
     // Wait for the initial table render, then attach the draggable handles to the headers
-    setTimeout(() => {
-      this.addResizeHandles();
-    });
+    setTimeout(() => this.addResizeHandles());
 
     // Material Table sorting breaks with Signals sometimes. 
     // This custom accessor forces it to read the raw object properties correctly.

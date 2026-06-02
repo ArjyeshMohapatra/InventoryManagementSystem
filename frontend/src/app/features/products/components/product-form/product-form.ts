@@ -13,6 +13,7 @@ export class ProductForm {
   catStore = this.categoryStore;
 
   form = input.required<FormGroup>();
+  suppliers = input<any[]>([]);
   loading = input(false);
   buttonText = input('Save');
   submitted = output<void>();

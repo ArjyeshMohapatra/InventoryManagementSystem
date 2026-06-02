@@ -3,6 +3,7 @@
 <app-product-form 
 [form]="form" 
 [loading]="prodStore.loading()" 
+[suppliers]="suppStore.suppliers()"
 buttonText="Update Product"
 (submitted)="submit()">
 </app-product-form>
