@@ -8,6 +8,7 @@ import { Modal } from '../../../../shared/ui/modal/modal';
 import { SupplierStore } from '../../store/supplier.store';
 import { ProductStore } from 'src/app/features/products/store/product.store';
 import { Supplier } from '../../models/supplier.model';
+import { CategoryStore } from 'src/app/features/categories/store/category.store';
 
 @Component({
   selector: 'app-supplier-list',
@@ -18,9 +19,11 @@ import { Supplier } from '../../models/supplier.model';
 export class SupplierList {
   private supplierStore = inject(SupplierStore);
   private productStore = inject(ProductStore);
+  private categoryStore = inject(CategoryStore);
 
   suppStore = this.supplierStore;
   prodStore = this.productStore;
+  catStore = this.categoryStore;
 
   searchInput = signal('');
   searchTerm = signal('');
@@ -34,7 +37,9 @@ export class SupplierList {
     'email',
     'phone',
     'website',
-    'gstNumber'
+    'gstNumber',
+    'totalProductsQuantity',
+    'linkedCategories'
   ];
 
   actions = true;
@@ -60,13 +65,52 @@ export class SupplierList {
     });
   }
 
+  supplierQuantityMap = computed(() => {
+    const products = this.prodStore.products();
+    const totals: Record<string, number> = {};
+    products.forEach(product => { totals[product.supplierId] = (totals[product.supplierId] || 0) + product.quantity });
+    return totals;
+  });
+
+  supplierCategoryMap = computed(() => {
+    const products = this.prodStore.products() || [];
+    const categories = this.catStore.categories() || [];
+
+    if (categories.length === 0) return {};
+
+    const categoryLookup = categories.reduce((acc, cat) => {
+      acc[cat.id] = cat.name;
+      return acc;
+    }, {} as Record<string, string>);
+
+    const linked: Record<string, Set<string>> = {};
+  
+    products.forEach(product => {
+      if (!linked[product.supplierId]) {
+        linked[product.supplierId] = new Set();
+      }
+      if (product.category) {
+          const categoryName = categoryLookup[product.category] || 'Unknown Category';
+          linked[product.supplierId].add(categoryName);
+      }
+    });
+  
+    // Convert Sets to a comma-separated string for display
+    const result: Record<string, string> = {};
+    for (const supplierId in linked) {
+      result[supplierId] = Array.from(linked[supplierId]).join(', ');
+    }
+  
+    return result;
+  });
+
   filteredSuppliers = computed(() => {
     const suppliers = this.suppStore.suppliers();
     const term = this.searchTerm().toLowerCase().trim();
 
     return suppliers.filter(
       (supplier) => !term || supplier.name.toLowerCase().includes(term)
-    );
+    ).map(supplier => ({ ...supplier, totalProductsQuantity: this.supplierQuantityMap()[supplier.id] ?? 0, linkedCategories : this.supplierCategoryMap()[supplier.id] ?? '' }));
   });
 
   openDeleteModal(supplier: Supplier) {
