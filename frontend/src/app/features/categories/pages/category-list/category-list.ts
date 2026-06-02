@@ -25,7 +25,10 @@ export class CategoryList {
 
   searchInput = signal('');
   searchTerm = signal('');
-  columns = ['name'];
+  columns = [
+    'name',
+    'totalProductsQuantity'
+  ];
   actions = true;
   selectedCategory = signal<Category | any>(null);
   showDeleteModal = signal(false);
@@ -41,11 +44,47 @@ export class CategoryList {
     this.prodStore.loadProducts();
   }
 
+  categorySupplierCountMap = computed(() => {
+    const products = this.prodStore.products() || [];
+  
+    // Track unique supplier IDs per category
+    const catSupplier: Record<string, Set<string>> = {};
+  
+    products.forEach(product => {
+      if (!product || !product.category) return;
+  
+      if (!catSupplier[product.category]) {
+        catSupplier[product.category] = new Set<string>();
+      }
+  
+      if (product.supplierId) {
+        catSupplier[product.category].add(product.supplierId);
+      }
+    });
+  
+    // Convert the Sets directly to their counts (sizes)
+    const result: Record<string, number> = {};
+    for (const categoryId in catSupplier) {
+      result[categoryId] = catSupplier[categoryId].size;
+    }
+  
+    return result;
+  });
+
+  categoryQuantityMap = computed(() => {
+    const products = this.prodStore.products();
+    const totals: Record<string, number> = {};
+    products.forEach(product => { totals[product.category] = (totals[product.category] || 0) + product.quantity });
+    return totals;
+  });
+
   filteredCategories = computed(() => {
     const categories = this.catStore.categories();
     const term = this.searchTerm().toLowerCase().trim();
-    return categories.filter((category) => !term || category.name.toLowerCase().includes(term));
-  });
+    return categories.filter((category) =>
+      !term || category.name.toLowerCase().includes(term)
+    ).map(category => ({ ...category, totalProductsQuantity: this.categoryQuantityMap()[category.id] ?? 0}));
+  })
 
   async openDeleteModal(category: any) {
     this.selectedCategory.set(category);
