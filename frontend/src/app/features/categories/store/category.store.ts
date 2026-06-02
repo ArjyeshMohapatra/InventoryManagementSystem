@@ -120,16 +120,16 @@ export class CategoryStore extends CacheStore {
             });
         }
 
-    deleteCategoryWithProducts(id: string, onSuccess?: () => void) {
+    deleteCategoryWithProducts(categoryId: string, onSuccess?: () => void) {
         this.loading.set(true);
-        this.catRepo.deleteCategoryWithProducts(id).pipe(
+        this.catRepo.deleteCategoryWithProducts(categoryId).pipe(
             finalize(() => {
             this.loading.set(false);
             })
         ).subscribe({
             next: () => {
-                this.categories.update(categories => categories.filter(category => category.id !== id));
-                this.prodStore.loadProducts();
+                this.categories.update(categories => categories.filter(category => category.id !== categoryId));
+                this.prodStore.products.update(products => products.filter(product => product.category !== categoryId));
                 onSuccess?.();
             },
             error: () => {

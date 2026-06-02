@@ -139,7 +139,7 @@ export class SupplierStore extends CacheStore {
       ).subscribe({
         next: () => {
             this.suppliers.update(suppliers => suppliers.filter(supplier => supplier.id !== supplierId));
-            this.prodStore.loadProducts();
+            this.prodStore.products.update(products => products.filter(product => product.supplierId !== supplierId));
             onSuccess?.();
         },
         error: () => {

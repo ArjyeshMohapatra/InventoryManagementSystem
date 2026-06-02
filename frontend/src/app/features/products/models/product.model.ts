@@ -9,3 +9,4 @@ export interface Product {
     supplierId: Supplier["id"];
     order: number;
 }
+5
