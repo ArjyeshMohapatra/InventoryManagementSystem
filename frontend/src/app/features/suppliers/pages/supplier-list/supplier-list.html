@@ -17,15 +17,15 @@
     
         <div class="flex gap-2">
     
-            <button [routerLink]="['/suppliers/edit', row.id]" class="bg-yellow-500 text-white px-2 py-1 rounded">
+            <button [routerLink]="['/suppliers/edit', row.id]" class="bg-blue-200 text-blue-500 px-2 py-1 rounded">
     
-                Edit
+                <fa-icon [icon]="edit"></fa-icon>
     
             </button>
     
-            <button (click)="openDeleteModal(row)" class="bg-red-500 text-white px-2 py-1 rounded">
+            <button (click)="openDeleteModal(row)" class="bg-red-200 text-red-500 px-2 py-1 rounded">
     
-                Delete
+                <fa-icon [icon]="remove"></fa-icon>
     
             </button>
     

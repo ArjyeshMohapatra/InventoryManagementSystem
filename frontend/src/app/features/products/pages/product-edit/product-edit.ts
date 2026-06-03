@@ -1,8 +1,5 @@
-import { Component, effect, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, effect, inject, signal, output, input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-
 import { ProductForm } from '../../components/product-form/product-form';
 import { ProductStore } from '../../store/product.store';
 import { Product } from '../../models/product.model';
@@ -18,8 +15,6 @@ import { InventoryTransactionStore } from 'src/app/features/inventory-transactio
 export class ProductEdit{
 
   private fb = inject(FormBuilder);
-  private router = inject(Router);
-  private route = inject(ActivatedRoute);
   private productStore = inject(ProductStore);
   private supplierStore = inject(SupplierStore);
   private transactionStore = inject(InventoryTransactionStore);
@@ -29,8 +24,9 @@ export class ProductEdit{
   suppStore = this.supplierStore;
   prodStore = this.productStore
   tranStore = this.transactionStore;
+  saved = output<void>();
 
-  id = String(this.route.snapshot.paramMap.get('id'));
+  productId = input.required<string>();
 
   form = this.fb.group({
 
@@ -44,7 +40,11 @@ export class ProductEdit{
   });
   
   constructor() {
-    this.prodStore.loadProductById(this.id);
+    effect(() => {
+      const id = this.productId();
+      this.prodStore.loadProductById(id);
+    });
+
     this.suppStore.loadSuppliers();
     effect(() => {
       const productData = this.prodStore.selectedProduct();
@@ -60,7 +60,7 @@ export class ProductEdit{
 
   submit() {
     if (this.form.invalid || this.prodStore.loading()) return;
-    const updatedProduct = { ...this.form.value, id: String(this.id) };
+    const updatedProduct = { ...this.form.value, id: String(this.productId()) };
     
     this.prodStore.updateProduct(updatedProduct as Product, () => {
       const transactions = this.pendingTransactions();
@@ -68,14 +68,14 @@ export class ProductEdit{
       transactions.forEach(transaction => {
         this.tranStore.addTransaction({
           id: crypto.randomUUID(),
-          productId: this.id,
+          productId: this.productId(),
           type: transaction.type,
           quantity: transaction.quantity,
           date: new Date().toISOString()
         });
   
       });
-      this.router.navigate(['/products']);
+      this.saved.emit();
     });
   }
 }

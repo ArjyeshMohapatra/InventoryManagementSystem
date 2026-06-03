@@ -10,7 +10,7 @@
             </app-search-input>
         </div>
 
-        <button routerLink="/products/create"
+        <button (click)="openCreateModal()"
             class="w-full sm:w-auto bg-green-600 text-white px-4 py-2 rounded whitespace-nowrap">Add Product</button>
 
     </div>
@@ -62,7 +62,7 @@
 
         <div class="flex gap-2">
     
-            <button [routerLink]="['/products/edit', row.id]" class="bg-yellow-200 text-yellow-500 px-2 py-1 rounded">
+            <button (click)="openEditModal(row)" class="bg-blue-200 text-blue-500 px-2 py-1 rounded">
     
                 <fa-icon [icon]="edit"></fa-icon>
     
@@ -87,4 +87,17 @@
   (confirmed)="deleteProduct()"
   (cancelled)="closeDeleteModal()"
   [showConfirm]="true">
+</app-modal>
+
+<app-modal [open]="showCreateModal()" title="Add Product" [showFooter]="false" (cancelled)="closeCreateModal()">
+
+    <app-product-create (saved)="closeCreateModal()">
+    </app-product-create>
+
+</app-modal>
+
+<app-modal [open]="showEditModal()" title="Edit Product" [showFooter]="false" (cancelled)="closeEditModal()">
+    @if(editingProduct(); as product){
+        <app-product-edit [productId]="product.id" (saved)="closeEditModal()"></app-product-edit>
+    }
 </app-modal>

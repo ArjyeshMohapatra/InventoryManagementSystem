@@ -6,13 +6,15 @@ import { SearchInput, SelectInput, Table, Modal } from '../../../../shared/ui';
 import { Product } from '../../models/product.model';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { SupplierStore } from 'src/app/features/suppliers/store/supplier.store';
-import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHistory, faEdit, faDumpster } from '@fortawesome/free-solid-svg-icons';
+import { ProductCreate } from '../product-create/product-create';
+import { ProductEdit } from '../product-edit/product-edit';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [RouterLink, SearchInput, SelectInput, Table, Modal, FaIconComponent],
+  imports: [RouterLink, SearchInput, SelectInput, Table, Modal, FontAwesomeModule, ProductCreate, ProductEdit],
   templateUrl: './product-list.html'
 })
 export class ProductList {
@@ -43,6 +45,10 @@ export class ProductList {
 
   selectedProduct = signal<Product | null>(null);
   showDeleteModal = signal(false);
+
+  showCreateModal = signal(false);
+  showEditModal = signal(false);
+  editingProduct = signal<Product | null>(null);
 
   history = faHistory;
   edit = faEdit;
@@ -133,6 +139,24 @@ export class ProductList {
         }
       );
     }
+  }
+
+  openCreateModal() {
+    this.showCreateModal.set(true);
+  }
+  
+  closeCreateModal() {
+    this.showCreateModal.set(false);
+  }
+
+  openEditModal(product: Product) {
+    this.editingProduct.set(product);
+    this.showEditModal.set(true);
+  }
+  
+  closeEditModal() {
+    this.editingProduct.set(null);
+    this.showEditModal.set(false);
   }
 
   swapProducts(event: CdkDragDrop<any[]>) {

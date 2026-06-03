@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -22,6 +22,7 @@ export class ProductCreate {
 
   suppStore = this.supplierStore;
   prodStore = this.productStore;
+  saved = output<void>();
 
   form = this.fb.group({
 
@@ -41,7 +42,7 @@ export class ProductCreate {
   submit() {
     if (this.form.invalid || this.prodStore.loading()) return;
     this.prodStore.addProduct(this.form.value as Product, () => {
-        this.router.navigate(['/products']);
+      this.saved.emit();
       }
     );
   }

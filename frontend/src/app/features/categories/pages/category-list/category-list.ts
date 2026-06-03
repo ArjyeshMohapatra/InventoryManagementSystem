@@ -5,14 +5,15 @@ import { Table } from '../../../../shared/ui/table/table';
 import { CategoryStore } from '../../store/category.store';
 import { Modal } from '../../../../shared/ui/modal/modal';
 import { ProductRepository } from '../../../../core/api/repositories/product.repository';
-import { lastValueFrom } from 'rxjs';
 import { Category } from '../../models/category.model';
 import { ProductStore } from 'src/app/features/products/store/product.store';
+import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faHistory, faEdit, faDumpster } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [RouterLink, SearchInput, Table, Modal],
+  imports: [RouterLink, SearchInput, Table, Modal, FontAwesomeModule],
   templateUrl: './category-list.html',
 })
 export class CategoryList {
@@ -34,6 +35,10 @@ export class CategoryList {
   selectedCategory = signal<Category | any>(null);
   showDeleteModal = signal(false);
   deleteMessage = signal('');
+
+  history = faHistory;
+  edit = faEdit;
+  remove = faDumpster;
 
   constructor() {
     effect((onCleanup) => {

@@ -9,11 +9,13 @@ import { SupplierStore } from '../../store/supplier.store';
 import { ProductStore } from 'src/app/features/products/store/product.store';
 import { Supplier } from '../../models/supplier.model';
 import { CategoryStore } from 'src/app/features/categories/store/category.store';
+import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faHistory, faEdit, faDumpster } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-supplier-list',
   standalone: true,
-  imports: [RouterLink, SearchInput, Table, Modal],
+  imports: [RouterLink, SearchInput, Table, Modal, FontAwesomeModule],
   templateUrl: './supplier-list.html',
 })
 export class SupplierList {
@@ -47,6 +49,10 @@ export class SupplierList {
   selectedSupplier = signal<Supplier | null>(null);
   showDeleteModal = signal(false);
   deleteMessage = signal('');
+
+  history = faHistory;
+  edit = faEdit;
+  remove = faDumpster;
 
   constructor() {
     this.suppStore.loadSuppliers();
