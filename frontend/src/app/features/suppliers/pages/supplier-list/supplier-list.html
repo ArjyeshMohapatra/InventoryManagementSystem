@@ -36,5 +36,5 @@
 
 
 <app-modal [open]="showDeleteModal()" title="Delete Supplier" [message]="deleteMessage()"
-    (confirmed)="deleteSupplier()" (cancelled)="closeDeleteModal()">
+    (confirmed)="deleteSupplier()" (cancelled)="closeDeleteModal()" [showConfirm]="true">
 </app-modal>

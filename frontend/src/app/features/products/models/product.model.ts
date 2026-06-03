@@ -4,9 +4,9 @@ export interface Product {
     id: string;
     name: string;
     price: number; 
-    quantity: number;
+    stock: number;
     category: Category["id"];
     supplierId: Supplier["id"];
     order: number;
+    lowStockThreshold: number;
 }
-5

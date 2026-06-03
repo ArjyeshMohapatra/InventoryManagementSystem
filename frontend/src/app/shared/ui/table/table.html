@@ -21,7 +21,27 @@
                     | titlecase }}
                 </th>
                 <td mat-cell *matCellDef="let row" [style.width.px]="columnWidths[column]"
-                    [style.min-width.px]="columnWidths[column]" [style.max-width.px]="columnWidths[column]"> {{ row[column] }}
+                    [style.min-width.px]="columnWidths[column]" [style.max-width.px]="columnWidths[column]">
+                    @if (column === 'status'){
+                        <span 
+                            class="px-2 py-1 rounded-full text-xs font-medium"
+                            [class.bg-green-100]="row.status === 'green'"
+                            [class.text-green-700]="row.status === 'green'"
+                            [class.bg-yellow-100]="row.status === 'yellow'"
+                            [class.text-yellow-700]="row.status === 'yellow'"
+                            [class.bg-red-100]="row.status === 'red'"
+                            [class.text-red-700]="row.status === 'red'">
+                            {{
+                            row.status === 'green'
+                            ? 'In Stock'
+                            : row.status === 'yellow'
+                            ? 'Low Stock'
+                            : 'Out'              
+                            }}
+                        </span>
+                    } @else {
+                        {{ row[column] }}
+                    }
                 </td>
             </ng-container>
             }

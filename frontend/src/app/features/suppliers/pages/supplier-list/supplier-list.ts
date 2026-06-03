@@ -38,7 +38,7 @@ export class SupplierList {
     'phone',
     'website',
     'gstNumber',
-    'totalProductsQuantity',
+    'stock',
     'linkedCategories'
   ];
 
@@ -68,7 +68,7 @@ export class SupplierList {
   supplierQuantityMap = computed(() => {
     const products = this.prodStore.products();
     const totals: Record<string, number> = {};
-    products.forEach(product => { totals[product.supplierId] = (totals[product.supplierId] || 0) + product.quantity });
+    products.forEach(product => { totals[product.supplierId] = (totals[product.supplierId] || 0) + product.stock });
     return totals;
   });
 
@@ -110,7 +110,7 @@ export class SupplierList {
 
     return suppliers.filter(
       (supplier) => !term || supplier.name.toLowerCase().includes(term)
-    ).map(supplier => ({ ...supplier, totalProductsQuantity: this.supplierQuantityMap()[supplier.id] ?? 0, linkedCategories : this.supplierCategoryMap()[supplier.id] ?? '' }));
+    ).map(supplier => ({ ...supplier, stock: this.supplierQuantityMap()[supplier.id] ?? 0, linkedCategories : this.supplierCategoryMap()[supplier.id] ?? '' }));
   });
 
   openDeleteModal(supplier: Supplier) {

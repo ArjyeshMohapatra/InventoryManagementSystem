@@ -17,11 +17,20 @@
     </div>
 
     <div>
-        <label class="block mb-1 font-medium">
-            Quantity
-        </label>
-
-        <input type="number" formControlName="quantity" [readonly]="loading()" class="border p-2 w-full rounded">
+        <label class="block mb-1 font-medium">Stock</label>
+        @if (!isEditMode()) {
+        <input type="number" formControlName="stock" [readonly]="loading()" class="border p-2 w-full rounded">
+        } @else {
+            <div class="flex items-center gap-3 flex-wrap">
+                <span class="text-gray-700">Current Stock: {{ form().get('stock')?.value }}</span>
+                <input #qty type="number" min="1" class="border p-2 rounded w-24" placeholder="Qty">
+                <button type="button" class="bg-green-500 text-white px-3 py-1 rounded" (click)="addStock(+qty.value, qty)">
+                    + Add
+                </button>
+                <button type="button" class="bg-red-500 text-white px-3 py-1 rounded" (click)="removeStock(+qty.value, qty)">
+                    - Remove
+                </button>      </div>
+        }
     </div>
 
     <div>
@@ -55,3 +64,7 @@
     </button>
 
 </form>
+
+<app-modal [open]="showStockModal()" title="Stock Warning" [message]="stockMessage()" cancelText="Close"
+    [showConfirm]="false" (cancelled)="closeStockModal()">
+</app-modal>

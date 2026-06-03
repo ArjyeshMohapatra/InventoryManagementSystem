@@ -27,7 +27,7 @@ export class CategoryList {
   searchTerm = signal('');
   columns = [
     'name',
-    'totalProductsQuantity',
+    'stock',
     'supplierCount'
   ];
   actions = true;
@@ -75,7 +75,7 @@ export class CategoryList {
   categoryQuantityMap = computed(() => {
     const products = this.prodStore.products();
     const totals: Record<string, number> = {};
-    products.forEach(product => { totals[product.category] = (totals[product.category] || 0) + product.quantity });
+    products.forEach(product => { totals[product.category] = (totals[product.category] || 0) + product.stock });
     return totals;
   });
 
@@ -86,7 +86,7 @@ export class CategoryList {
       !term || category.name.toLowerCase().includes(term)
     ).map(category => ({
       ...category,
-      totalProductsQuantity: this.categoryQuantityMap()[category.id] ?? 0,
+      stock: this.categoryQuantityMap()[category.id] ?? 0,
       supplierCount: this.categorySupplierCountMap()[category.id] ?? 0
     }));
   })

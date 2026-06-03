@@ -32,7 +32,7 @@ export class ProductEdit{
 
     name: [''],
     price: [0],
-    quantity: [0],
+    stock: [0],
     category: [''],
     supplierId: ['']
 

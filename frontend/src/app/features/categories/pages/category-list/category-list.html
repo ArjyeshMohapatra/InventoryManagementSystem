@@ -19,5 +19,5 @@
         </ng-template>
 }
 <app-modal [open]="showDeleteModal()" title="Delete Category" [message]=deleteMessage()
-    (confirmed)="deleteCategory()" (cancelled)="closeDeleteModal()">
+    (confirmed)="deleteCategory()" (cancelled)="closeDeleteModal()" [showConfirm]="true">
 </app-modal>

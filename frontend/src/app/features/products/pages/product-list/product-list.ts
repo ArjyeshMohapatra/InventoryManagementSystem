@@ -18,7 +18,8 @@ export class ProductList {
   columns = [
     'name',
     'price',
-    'quantity',
+    'stock',
+    'status',
     'categoryName',
     'supplierName'
   ];
@@ -80,10 +81,15 @@ export class ProductList {
       const matchesSupplier = !supplier || product.supplierId === supplier;
 
       return (matchesSearch && matchesCategory && matchesSupplier);
-    }).map(product => ({
+    });
+  });
+
+  displayProducts = computed(() => {
+    return this.filteredProducts().map(product => ({
       ...product,
       categoryName: this.categoryMap()[product.category] ?? 'Unknown',
-      supplierName: this.supplierMap()[product.supplierId] ?? 'Unknown'
+      supplierName: this.supplierMap()[product.supplierId] ?? 'Unknown',
+      status: product.stock === 0 ? 'red' : product.stock <= product.lowStockThreshold ? 'yellow' : 'green'
     }));
   });
 
