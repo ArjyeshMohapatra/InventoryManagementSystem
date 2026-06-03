@@ -6,11 +6,13 @@ import { SearchInput, SelectInput, Table, Modal } from '../../../../shared/ui';
 import { Product } from '../../models/product.model';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { SupplierStore } from 'src/app/features/suppliers/store/supplier.store';
+import { FontAwesomeModule, FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { faHistory, faEdit, faDumpster } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [RouterLink, SearchInput, SelectInput, Table, Modal],
+  imports: [RouterLink, SearchInput, SelectInput, Table, Modal, FaIconComponent],
   templateUrl: './product-list.html'
 })
 export class ProductList {
@@ -41,6 +43,10 @@ export class ProductList {
 
   selectedProduct = signal<Product | null>(null);
   showDeleteModal = signal(false);
+
+  history = faHistory;
+  edit = faEdit;
+  remove = faDumpster;
 
   constructor() {
     effect((onCleanup) => {

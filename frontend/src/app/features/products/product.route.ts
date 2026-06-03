@@ -18,4 +18,10 @@ export const PRODUCT_ROUTES: Routes = [
       import('./pages/product-create/product-create')
       .then(c => c.ProductCreate)
   },
+  {
+    path: 'history/:id',
+    loadComponent: () =>
+      import('./pages/product-history/product-history')
+      .then(c => c.ProductHistory)
+  }
 ];

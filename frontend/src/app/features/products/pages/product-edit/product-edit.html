@@ -5,6 +5,7 @@
 [loading]="prodStore.loading()" 
 [suppliers]="suppStore.suppliers()"
 [isEditMode]="true"
+(stockTransactions)="setTransactions($event)"
 buttonText="Update Product"
 (submitted)="submit()">
 </app-product-form>

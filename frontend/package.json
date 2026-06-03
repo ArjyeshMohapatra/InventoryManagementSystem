@@ -25,7 +25,9 @@
     "@fortawesome/free-regular-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@tanstack/angular-query-experimental": "^5.100.14",
+    "chart.js": "^4.5.1",
     "json-server": "^1.0.0-beta.15",
+    "ng2-charts": "^10.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

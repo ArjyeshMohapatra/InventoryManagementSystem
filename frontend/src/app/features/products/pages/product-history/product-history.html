@@ -1,0 +1,12 @@
+<h1 class="text-2xl font-bold mb-2">{{ prodStore.selectedProduct()?.name }} History</h1>
+<p class="mb-6">Current Stock: {{ prodStore.selectedProduct()?.stock }}</p>
+<div class="mx-auto bg-white rounded-xl shadow border border-gray-300 p-5 mb-6 flex justify-center
+    w-full
+    sm:w-[90%]
+    md:w-[80%]
+    lg:w-[70%]
+    xl:w-[60%]
+    h-65">
+    <canvas baseChart [data]="lineChartData()" [options]="lineChartOptions" type="line"></canvas>
+</div>
+<app-table [columns]="columns" [data]="historyRows()"></app-table>

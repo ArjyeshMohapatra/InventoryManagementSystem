@@ -2,6 +2,8 @@ import { Component, input, output,inject, computed, signal } from '@angular/core
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CategoryStore } from 'src/app/features/categories/store/category.store';
 import { Modal } from '@shared/ui';
+import { InventoryTransaction } from 'src/app/features/inventory-transactions/models/inventory-transaction.model';
+import { InventoryTransactionStore } from 'src/app/features/inventory-transactions/store/inventory-transaction.store';
 
 @Component({
   selector: 'app-product-form',
@@ -11,7 +13,10 @@ import { Modal } from '@shared/ui';
 })
 export class ProductForm {
   private categoryStore = inject(CategoryStore);
+  private transactionStore = inject(InventoryTransactionStore);
+
   catStore = this.categoryStore;
+  tranStore = this.transactionStore;
 
   form = input.required<FormGroup>();
   suppliers = input<any[]>([]);
@@ -21,8 +26,11 @@ export class ProductForm {
   submitted = output<void>();
   showStockModal = signal(false);
   stockMessage = signal('');
+  pendingTransactions = signal<Pick<InventoryTransaction, 'type' | 'quantity'>[]>([]);
+  stockTransactions = output<{ type:'ADD' | 'REMOVE'; quantity:number }[]>();
   
   onSubmit() {
+    this.stockTransactions.emit(this.pendingTransactions());
     this.submitted.emit();
   }
 
@@ -39,6 +47,16 @@ export class ProductForm {
   
     const current = this.form().get('stock')?.value ?? 0;
     this.form().patchValue({ stock: current + quantity });
+
+    this.pendingTransactions.update(
+      transactions => [...transactions,
+        {
+          type: 'ADD',
+          quantity
+        }
+      ]
+    );
+
     qtyInput.value = '';
   }
   
@@ -52,6 +70,17 @@ export class ProductForm {
     }
   
     this.form().patchValue({ stock: current - quantity });
+
+    this.pendingTransactions.update(
+      transactions => [
+        ...transactions,
+        {
+          type: 'REMOVE',
+          quantity
+        }
+      ]
+    );
+
     qtyInput.value = '';
   }
 

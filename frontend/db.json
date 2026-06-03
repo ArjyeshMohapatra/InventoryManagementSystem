@@ -3,12 +3,11 @@
     {
       "name": "Mechanical Keyboard",
       "price": 4500,
-      "stock": 15,
-      "id": "aBcD1eF2gHi",
+      "stock": 12,
+      "lowStockThreshold": 10,
       "category": "A7kP2mQ9xL1",
-      "order": 4,
       "supplierId": "SUP001",
-      "lowStockThreshold": 5
+      "id": "aBcD1eF2gHi"
     },
     {
       "name": "FHD Monitor 24-inch",
@@ -29,12 +28,11 @@
     {
       "name": "USB-C Hub Multiport",
       "price": 2200,
-      "stock": 40,
-      "id": "bCdE7fG8hIj",
+      "stock": 35,
+      "lowStockThreshold": 5,
       "category": "A7kP2mQ9xL1",
-      "order": 3,
       "supplierId": "SUP001",
-      "lowStockThreshold": 5
+      "id": "bCdE7fG8hIj"
     },
     {
       "name": "Wireless Charger Pad",
@@ -903,6 +901,99 @@
       "website": "https://www.wellnessessentials.com",
       "gstNumber": "33WXYZ1234A5Z2",
       "address": "Chennai, Tamil Nadu"
+    }
+  ],
+  "inventoryTransactions": [
+    {
+      "id": "IT001",
+      "productId": "aBcD1eF2gHi",
+      "type": "ADD",
+      "quantity": 20,
+      "date": "2026-01-05T10:15:00.000Z"
+    },
+    {
+      "id": "IT002",
+      "productId": "aBcD1eF2gHi",
+      "type": "REMOVE",
+      "quantity": 5,
+      "date": "2026-01-18T15:30:00.000Z"
+    },
+    {
+      "id": "IT003",
+      "productId": "aBcD1eF2gHi",
+      "type": "ADD",
+      "quantity": 10,
+      "date": "2026-02-03T11:20:00.000Z"
+    },
+    {
+      "id": "IT004",
+      "productId": "aBcD1eF2gHi",
+      "type": "REMOVE",
+      "quantity": 8,
+      "date": "2026-02-20T17:10:00.000Z"
+    },
+    {
+      "id": "IT005",
+      "productId": "aBcD1eF2gHi",
+      "type": "ADD",
+      "quantity": 12,
+      "date": "2026-03-08T09:40:00.000Z"
+    },
+    {
+      "id": "IT006",
+      "productId": "aBcD1eF2gHi",
+      "type": "REMOVE",
+      "quantity": 6,
+      "date": "2026-03-26T14:55:00.000Z"
+    },
+    {
+      "id": "IT007",
+      "productId": "aBcD1eF2gHi",
+      "type": "ADD",
+      "quantity": 15,
+      "date": "2026-04-04T12:25:00.000Z"
+    },
+    {
+      "id": "IT008",
+      "productId": "aBcD1eF2gHi",
+      "type": "REMOVE",
+      "quantity": 9,
+      "date": "2026-04-22T18:35:00.000Z"
+    },
+    {
+      "id": "IT009",
+      "productId": "aBcD1eF2gHi",
+      "type": "ADD",
+      "quantity": 18,
+      "date": "2026-05-10T08:50:00.000Z"
+    },
+    {
+      "id": "IT010",
+      "productId": "aBcD1eF2gHi",
+      "type": "REMOVE",
+      "quantity": 7,
+      "date": "2026-05-29T16:45:00.000Z"
+    },
+    {
+      "id": "IT011",
+      "productId": "bCdE7fG8hIj",
+      "type": "ADD",
+      "quantity": 25,
+      "date": "2026-02-01T09:00:00.000Z"
+    },
+    {
+      "id": "IT012",
+      "productId": "bCdE7fG8hIj",
+      "type": "REMOVE",
+      "quantity": 5,
+      "date": "2026-03-01T09:00:00.000Z"
+    },
+    {
+      "id": "IT013",
+      "productId": "bCdE7fG8hIj",
+      "type": "ADD",
+      "quantity": 10,
+      "date": "2026-04-01T09:00:00.000Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

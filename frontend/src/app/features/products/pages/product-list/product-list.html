@@ -53,18 +53,24 @@
     (rowDropped)="swapProducts($event)">
     
     <ng-template #actionTemplate let-row>
-    
+
+        <button [routerLink]="['/products/history', row.id]" class="bg-green-200 text-green-500 px-2 py-1 rounded">
+        
+            <fa-icon [icon]="history"></fa-icon>
+        
+        </button>
+
         <div class="flex gap-2">
     
-            <button [routerLink]="['/products/edit', row.id]" class="bg-yellow-500 text-white px-2 py-1 rounded">
+            <button [routerLink]="['/products/edit', row.id]" class="bg-yellow-200 text-yellow-500 px-2 py-1 rounded">
     
-                Edit
+                <fa-icon [icon]="edit"></fa-icon>
     
             </button>
     
-            <button (click)="openDeleteModal(row)" class="bg-red-500 text-white px-2 py-1 rounded">
+            <button (click)="openDeleteModal(row)" class="bg-red-200 text-red-500 px-2 py-1 rounded">
     
-                Delete
+                <fa-icon [icon]="remove"></fa-icon>
     
             </button>
     

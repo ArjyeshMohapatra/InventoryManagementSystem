@@ -28,6 +28,7 @@ export class ProductCreate {
     name: [''],
     price: [0],
     stock: [0],
+    lowStockThreshold: [5],
     category: [''],
     supplierId: ['']
 
